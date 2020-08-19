@@ -26,6 +26,9 @@ How to get started:
   on main url use https://{hostname}/auth
   on callbacks use https://{hostname}/auth/callback
 5. Install the app on a development store from your partner dashboard.
+
+NOTE: For webhook to work according to this server.js, you need to setup the webhok url in evironment file to 
+https://{{hostname}}/webhooks
 */
 
 //PART 1: Initialization
