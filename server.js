@@ -29,6 +29,7 @@ How to get started:
 
 NOTE: For webhook to work according to this server.js, you need to setup the webhok url in evironment file to 
 https://{{hostname}}/webhooks
+
 */
 
 //PART 1: Initialization
