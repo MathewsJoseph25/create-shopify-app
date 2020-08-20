@@ -1,10 +1,12 @@
 import React from "react";
 import { EmptyState, Layout, Page } from "@shopify/polaris";
 import Link from "next/link";
+import { AppStatus } from "./components/wrapper";
 
 const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
 export default class Index extends React.Component {
+  static contextType = AppStatus;
   render() {
     return (
       <Page>
@@ -29,10 +31,12 @@ export default class Index extends React.Component {
       </Page>
     );
   }
-  callApi() {
+  callApi = () => {
     console.log("Sending Api Request");
-    window.api.get("/api/2").then(function (response) {
+    this.context.showLoadingBar();
+    window.api.get("/2").then((response) => {
       console.log(response.data);
+      this.context.hideLoadingBar();
     });
-  }
+  };
 }
