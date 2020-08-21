@@ -1,8 +1,8 @@
 {
   "name": "create-shopify-app",
   "version": "1.0.0",
-  "description": "Getting Started with Shopify App Development",
-  "main": "server.js",
+  "description": "Getting Started with Shopify App Development with JWT Authentication using NodeJs, React, Shopify Polaris and MongoDB",
+  "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server/server.js",
