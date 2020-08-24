@@ -103,7 +103,6 @@ const callback = async (req, res) => {
     res.send("An Error Occured while installing! Please try again.");
     return;
   }
-  req.query.accessToken = accessToken.data.access_token;
   //Step 5: create webhooks
   addWebhooks(
     req.query.shop.replace("https://", "").replace("http://", ""),
