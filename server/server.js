@@ -23,7 +23,6 @@ const express = require("express");
 const nextapp = require("next");
 const server = express();
 const bodyParser = require("body-parser");
-server.use(bodyParser.raw({ type: "application/json" }));
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -56,10 +55,14 @@ server.get("/_next/*", (req, res) => {
 server.use("/auth", authRoutes);
 
 //Api Url
-server.use("/api", apiRoutes);
+server.use("/api", bodyParser.json(), apiRoutes);
 
 //Webhook Url
-server.use("/webhooks", webhookRoutes);
+server.use(
+  "/webhooks",
+  bodyParser.raw({ type: "application/json" }),
+  webhookRoutes
+);
 
 // Middleware for checking if shop param is present for all app page requests
 const checkShop = require("./middleware/checkShop");

@@ -44,36 +44,32 @@ export class AppWrapper extends React.Component {
     });
   };
   render() {
+    const loadingPage = this.state.pageLoading ? null : { display: "none" };
+    const mainPageDisplay = this.state.pageLoading ? { display: "none" } : null;
+
     return (
       <AppStatus.Provider value={this.state}>
         <React.Fragment>
-          {this.state.pageLoading ? (
-            <div>
-              <Frame>
-                <Loading></Loading>
-              </Frame>
-              <div
-                style={{
-                  width: "100%",
-                  height: "100vh",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  position: "fixed",
-                  top: "0px",
-                  left: "0px",
-                }}
-              >
-                <Spinner
-                  accessibilityLabel="Loading"
-                  size="large"
-                  color="teal"
-                />
-              </div>
+          <div style={loadingPage}>
+            <Frame>
+              <Loading></Loading>
+            </Frame>
+            <div
+              style={{
+                width: "100%",
+                height: "100vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                position: "fixed",
+                top: "0px",
+                left: "0px",
+              }}
+            >
+              <Spinner accessibilityLabel="Loading" size="large" color="teal" />
             </div>
-          ) : (
-            this.props.children
-          )}
+          </div>
+          <div style={mainPageDisplay}>{this.props.children}</div>
           {this.state.loadingBar ? (
             <div>
               <Frame>
