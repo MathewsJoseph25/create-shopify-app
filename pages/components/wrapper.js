@@ -6,7 +6,8 @@ export const AppStatus = React.createContext();
 
 //This class is responsible for showing the loading bar, spinner and the toast
 //and can be accessible by this.context.<function-name> within all the pages except _app.js
-export class AppWrapper extends React.Component {
+
+class AppWrapper extends React.Component {
   static contextType = AppStatus;
   state = {
     pageLoading: false,
@@ -95,3 +96,5 @@ export class AppWrapper extends React.Component {
     this.setState({ toast: false });
   };
 }
+
+export default AppWrapper;
