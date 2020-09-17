@@ -7,7 +7,7 @@ import translations from "@shopify/polaris/locales/en.json";
 import axios from "axios";
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import { useAppBridge } from "@shopify/app-bridge-react";
-import { AppWrapper } from "./components/wrapper";
+import AppWrapper from "./components/wrapper";
 
 const InitApiAuth = () => {
   const appBridge = useAppBridge();
