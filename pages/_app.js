@@ -1,4 +1,13 @@
-import App from "next/app";
+/*
+NOTE: You need to add the shop param to all page redirects within this app.
+Use window.shop to add the shop param whenever required.
+This is set as required so that when you update the express app (whole next app reload after that), 
+this app can load properly with the shop param at the url
+
+You can make this optional by changin line 43 to :
+if (typeof window === `undefined`)
+*/
+
 import Head from "next/head";
 import { AppProvider } from "@shopify/polaris";
 import { Provider } from "@shopify/app-bridge-react";
@@ -7,9 +16,11 @@ import translations from "@shopify/polaris/locales/en.json";
 import axios from "axios";
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import { useAppBridge } from "@shopify/app-bridge-react";
-import AppWrapper from "./components/wrapper";
+import AppWrapper from "../components/wrapper";
 
-const InitApiAuth = () => {
+const InitAuthSettings = () => {
+  //For API Requests
+
   const appBridge = useAppBridge();
   //create an axios instance on the window object
   window.api = axios.create();
@@ -25,41 +36,37 @@ const InitApiAuth = () => {
   });
   return null;
 };
+function MyApp({ Component, pageProps, router }) {
+  //Don't render anything on server side
+  //shop is undefined in the first render and so, we need to wait for that to be defined
+  // shopify calls with shop param and so, we'll have that here as params
+  if (typeof window === `undefined` || !router.query.shop) return null;
 
-class MyApp extends App {
-  static getInitialProps(params) {
-    //setting the shop parameter from the url query
-    return {
-      shop: params.ctx.query.shop,
-    };
-  }
-  render() {
-    var { Component, pageProps } = this.props;
-    const config = {
-      apiKey: API_KEY,
-      shopOrigin: this.props.shop,
-      forceRedirect: true,
-    };
-    //Don't render anything on server side
-    if (typeof window === `undefined`) return null;
-    else
-      return (
-        <React.Fragment>
-          <Head>
-            <title>Sample App</title>
-            <meta charSet="utf-8" />
-          </Head>
-          <Provider config={config}>
-            <AppProvider i18n={translations}>
-              <InitApiAuth></InitApiAuth>
-              <AppWrapper>
-                <Component {...pageProps} />
-              </AppWrapper>
-            </AppProvider>
-          </Provider>
-        </React.Fragment>
-      );
-  }
+  //Shopify App bridge config
+  const config = {
+    apiKey: API_KEY,
+    shopOrigin: router.query.shop,
+    forceRedirect: true,
+  };
+
+  //Setting the shop param to window object, so that we can use this when we redirect to other pages of the app
+  window.shop = router.query.shop;
+
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Shopify App</title>
+        <meta charSet="utf-8" />
+      </Head>
+      <Provider config={config}>
+        <AppProvider i18n={translations}>
+          <InitAuthSettings></InitAuthSettings>
+          <AppWrapper>
+            <Component {...pageProps} />
+          </AppWrapper>
+        </AppProvider>
+      </Provider>
+    </React.Fragment>
+  );
 }
-
 export default MyApp;

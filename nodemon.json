@@ -1,5 +1,5 @@
 {
   "verbose": true,
-  "ignore": ["node_modules", ".next"],
+  "ignore": ["node_modules", ".next","pages","components"],
   "ext": "js json"
 }
