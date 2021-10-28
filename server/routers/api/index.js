@@ -11,5 +11,7 @@ api.get("/1", (req, res) => {
 api.get("/2", (req, res) => {
   res.json({ hi: "from second api" });
 });
-
+api.post("/regform", (req, res) => {
+  res.json({serial: serialNum})
+})
 module.exports = api;
