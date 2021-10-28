@@ -22,7 +22,7 @@ https://{{hostname}}/webhooks
 const express = require("express");
 const nextapp = require("next");
 const server = express();
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
@@ -55,12 +55,12 @@ server.get("/_next/*", (req, res) => {
 server.use("/auth", authRoutes);
 
 //Api Url
-server.use("/api", bodyParser.json(), apiRoutes);
+server.use("/api", express.json(), apiRoutes);
 
 //Webhook Url
 server.use(
   "/webhooks",
-  bodyParser.raw({ type: "application/json" }),
+  express.raw({ type: "application/json" }),
   webhookRoutes
 );
 
