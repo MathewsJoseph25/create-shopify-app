@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import { AppStatus } from "../components/wrapper";
 
-const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
+// const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
 export default class Index extends React.Component {
   static contextType = AppStatus;

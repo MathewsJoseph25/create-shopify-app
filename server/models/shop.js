@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const shopSchema = new Schema({
   shop: { type: String, required: true },
   accessToken: { type: String, default: null },
+  serialNum: {type:Number, default: null, min:700000000, max:800000000, minLength:9, maxLength:9},
   scopes: { type: String, default: null },
   isInstalled: { type: Boolean, default: false },
   installedOn: { type: Date, default: Date.now() },
@@ -13,6 +14,6 @@ const shopSchema = new Schema({
   info: { type: Object, default: {} },
 });
 
-const Shop = mongoose.model("shop", shopSchema);
+const Shop = mongoose.models.shop || mongoose.model("shop", shopSchema);
 
 module.exports = Shop;
