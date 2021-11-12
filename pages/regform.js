@@ -3,7 +3,7 @@ import { useState, useCallback } from "react";
 import { Button, Card, Form, FormLayout, TextField } from "@shopify/polaris";
 // const Shop = require("../server/models/shop");
 
-// const pushSerial = require("../server/middleware/pushSerial")
+const pushSerial = require("../server/middleware/pushSerial")
 
 const RegForm = () => {
   const [serialNum, setSerialNum] = useState({});
@@ -32,7 +32,7 @@ const RegForm = () => {
         console.log(serialNum);
         alert("Thank You");
         try {
-          // pushSerial();
+          pushSerial();
         } catch (error) {
           console.log(error);
         }

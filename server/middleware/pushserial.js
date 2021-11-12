@@ -1,4 +1,4 @@
-const Shop = require("../models/shop");
+// const Shop = require("../models/shop");
 const pushSerial = require("../routers/auth/helpers/pushSerial");
 
 const checkShop = async (req, res, next) => {
