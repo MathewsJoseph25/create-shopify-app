@@ -1,5 +1,6 @@
 const Shop = require("../models/shop");
 const getInstallUrl = require("../routers/auth/helpers/getInstallUrl");
+// const registration = require("../routers/api/helpers/registration");
 
 const checkShop = async (req, res, next) => {
   //check if shop param is present on the url
@@ -8,7 +9,7 @@ const checkShop = async (req, res, next) => {
       .replace("https://", "")
       .replace("http://", "")
       .split(".")[0];
-
+    console.log("req.query.shop :: ", req.query.shop);
     //check if shop is installed
     try {
       var shop = await Shop.findOne({ shop: req.query.shop });
@@ -27,6 +28,7 @@ const checkShop = async (req, res, next) => {
             .replace("http://", "")
             .split(".")[0]
         );
+        
         if (installUrl) res.redirect(installUrl);
         else res.send("An Error Occurred! Please go back and try again.");
       } catch (error) {

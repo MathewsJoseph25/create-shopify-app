@@ -1,7 +1,7 @@
 const axios = require("axios");
 const Shop = require("../../models/shop");
 const getInstallUrl = require("./helpers/getInstallUrl");
-
+const registration = require("./helpers/registration");
 const init = async (req, res) => {
   //check if shop param is present on the url
   if (req.query.shop && req.query.shop.indexOf("myshopify") != -1) {
@@ -62,6 +62,8 @@ const init = async (req, res) => {
 
     //Redirect to install url as shop isn't installed.
     try {
+      console.log("req ::",req);
+      console.log('req.query.shop  ::', req.query.shop)
       let installUrl = await getInstallUrl(
         req.query.shop
           .replace("https://", "")

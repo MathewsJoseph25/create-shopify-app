@@ -1,4 +1,5 @@
 const Shop = require("../../../models/shop");
+const registration = require("./registration");
 const axios = require("axios");
 
 const addWebhooks = async (shop, accessToken, webhooks) => {
@@ -7,6 +8,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
   const header = {
     "X-Shopify-Access-Token": accessToken,
   };
+  console.log(accessToken);
   for (var i = 0; i < webhooks.length; i++) {
     //setting the data value to check at later stage if webhook was created successfully or not.
     const webhookHandle = webhooks[i].replace("/", "_");
@@ -17,9 +19,9 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
         topic: webhooks[i],
         address: SHOPIFY_WEBHOOK_URI,
         format: "json",
-      },
+      }
     };
-
+    console.log(topic);
     try {
       //creating the webhook
       let webhook = await axios({
@@ -46,6 +48,17 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
       }
     }
     hook.markModified("webhooks");
+    try {
+      let registrationRes = await registration(
+        shop
+          .replace("https://", "")
+          .replace("http://", "")
+          .split(".")[0]
+      );
+      console.log("registration :: ", registrationRes);
+    } catch (e) {
+      console.log(e);
+    }
     await hook.save();
   } catch (e) {
     console.log("Error while Adding Webhook Data to Database", error);

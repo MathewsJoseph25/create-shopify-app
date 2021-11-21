@@ -1,33 +1,37 @@
 import { useState, useCallback } from "react";
-
 import { Button, Card, Form, FormLayout, TextField } from "@shopify/polaris";
+import axios from "axios";
+import { getSessionToken } from "@shopify/app-bridge-utils";
 // const Shop = require("../server/models/shop");
 
 // const pushSerial = require("../server/middleware/pushSerial")
 
-const RegForm = () => {
+const regForm = () => {
   const [serialNum, setSerialNum] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-  
+
+  const pushSerial = async (shop) => {
+    try {
+      await shop.updateOne(
+        { shop: shop },
+        { shop: shop, serial: serialNum },
+        { upsert: true }
+      );
+      console.log({ shop: shop, serial: serialNum });
+
+    } catch (error) {
+      console.log("Error while adding Nonce to Database: ", error);
+      return false;
+    }
+  };
+
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
       let errs = validate();
       setErrors(errs);
       setIsSubmitting(true);
-      // const pushSerial = async (shop) => {
-      //   try {
-      //     await Shop.updateOne(
-      //       { shop: shop },
-      //       { shop: shop, serialNum: serialNum },
-      //       { upsert: true }
-      //     );
-      //   } catch (error) {
-      //     console.log("Error while adding Nonce to Database: ", error);
-      //     return false;
-      //   }
-      // };
       if (serialNum % 9 === 0) {
         console.log(serialNum);
         alert("Thank You");
@@ -57,9 +61,25 @@ const RegForm = () => {
     return err;
   };
 
+  const handleSubmitSerial = async() => {
+    try{
+    //const token = await getSessionToken();
+   // console.log("getSessionToken ::", token);
+    //"X-Shopify-Access-Token": token
+    axios.post("https://99a8-2405-204-2207-8430-dd98-3126-b06-cd68.ngrok.io/api/regForm",{
+      "shop": "tallyecom",
+      "serialNumber": serialNum
+    }).then((response) => {
+      console.log('response :: ',response);
+    }).catch((err) => {
+      console.log('err: ',err);
+    })
+  }catch(e){console.log("e ::",e)}
+  }
+
   return (
     <Form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitSerial}
       // preventDefault={true}
       title="Registration"
       // method="POST"
@@ -91,4 +111,4 @@ const RegForm = () => {
   );
 };
 
-export default RegForm;
+export default regForm;
