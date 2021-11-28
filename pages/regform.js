@@ -2,6 +2,7 @@ import { useState, useCallback } from "react";
 import { Button, Card, Form, FormLayout, TextField } from "@shopify/polaris";
 import axios from "axios";
 import { getSessionToken } from "@shopify/app-bridge-utils";
+import createApp from "@shopify/app-bridge";
 // const Shop = require("../server/models/shop");
 
 // const pushSerial = require("../server/middleware/pushSerial")
@@ -19,7 +20,6 @@ const regForm = () => {
         { upsert: true }
       );
       console.log({ shop: shop, serial: serialNum });
-
     } catch (error) {
       console.log("Error while adding Nonce to Database: ", error);
       return false;
@@ -61,22 +61,45 @@ const regForm = () => {
     return err;
   };
 
-  const handleSubmitSerial = async() => {
-    try{
-    //const token = await getSessionToken();
-   // console.log("getSessionToken ::", token);
-    //"X-Shopify-Access-Token": token
-    axios.post("https://99a8-2405-204-2207-8430-dd98-3126-b06-cd68.ngrok.io/api/regForm",{
-      "shop": "tallyecom",
-      "serialNumber": serialNum
-    }).then((response) => {
-      console.log('response :: ',response);
-    }).catch((err) => {
-      console.log('err: ',err);
-    })
-  }catch(e){console.log("e ::",e)}
-  }
+  const handleSubmitSerial = async () => {
+    let errs = validate();
+    setErrors(errs);
+    setIsSubmitting(true);
+    if (serialNum % 9 === 0) {
+      const app = createApp({
+        apiKey: API_KEY,
+        shopOrigin: shop,
+        forceRedirect: true,
+      });
+      // console.log("app ::", app)
+      const token = await getSessionToken(app);
+      const header = { "X-Shopify-Access-Token": token };
+      // console.log("headers ::", header);
+      console.log(
+        {
+          shop: shop,
+          serialNumber: serialNum,
+        },
+        { headers: header }
+      );
 
+      try {
+        axios
+          .post("/api/regForm", {
+            shop: shop,
+            serialNumber: serialNum,
+          })
+          .then((response) => {
+            console.log("response :: ", response);
+          })
+          .catch((err) => {
+            console.log("err: ", err);
+          });
+      } catch (e) {
+        console.log("e ::", e);
+      }
+    }
+  };
   return (
     <Form
       onSubmit={handleSubmitSerial}

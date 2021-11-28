@@ -9,7 +9,7 @@ const checkShop = async (req, res, next) => {
       .replace("https://", "")
       .replace("http://", "")
       .split(".")[0];
-    console.log("req.query.shop :: ", req.query.shop);
+    // console.log("req.query.shop :: ", req.query.shop);
     //check if shop is installed
     try {
       var shop = await Shop.findOne({ shop: req.query.shop });

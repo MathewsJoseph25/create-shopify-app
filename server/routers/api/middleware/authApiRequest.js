@@ -2,7 +2,7 @@ const crypto = require("crypto");
 
 //Middleware for verifying Api Requests
 const authApiRequest = (req, res, next) => {
-  console.log('req ::',req);
+  // console.log('req ::',req);
   if (req.header("Authorization")) {
     const auth = req.header("Authorization");
     //Extracting the data

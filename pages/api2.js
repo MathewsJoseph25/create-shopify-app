@@ -17,7 +17,7 @@ export default class Index extends React.Component {
               content: "Fetch API 2",
               onAction: this.callApi,
             }}
-            image={img}
+            // image={img}
           >
             <p>
               Click on the button below and open the console to view the data

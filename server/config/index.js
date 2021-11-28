@@ -14,5 +14,6 @@ if (dev) {
   global.SHOPIFY_WEBHOOK_URI = process.env.PROD_SHOPIFY_WEBHOOK_URI;
   global.MONGODB_URI = process.env.PROD_MONGODB_URI;
 }
-global.API_VERSION = "2020-07";
-global.SCOPES = "write_products, write_themes";
+// global.API_VERSION = "2020-07";
+global.SCOPES = "read_products, write_products,read_inventory, write_inventory, read_orders, write_orders, read_customers, write_customers";
+global.API_VERSION = "2021-10";

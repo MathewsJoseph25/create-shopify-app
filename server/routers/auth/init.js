@@ -62,8 +62,8 @@ const init = async (req, res) => {
 
     //Redirect to install url as shop isn't installed.
     try {
-      console.log("req ::",req);
-      console.log('req.query.shop  ::', req.query.shop)
+      // console.log("req ::",req);
+      // console.log('req.query.shop  ::', req.query.shop)
       let installUrl = await getInstallUrl(
         req.query.shop
           .replace("https://", "")
