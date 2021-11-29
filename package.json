@@ -12,6 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "cacheDirectories": [".next/cache"],
   "dependencies": {
     "@shopify/app-bridge-react": "^1.26.2",
     "@shopify/app-bridge-utils": "^1.26.2",

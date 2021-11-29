@@ -23,7 +23,7 @@ api.post("/regform", async (req, res) => {
         .replace("http://", "")
         .split(".")[0], req.body.serialNumber
     );
-    console.log("registration :: ", registrationRes);
+    // console.log("registration :: ", registrationRes);
   } catch (e) {
     console.log(e);
   }
