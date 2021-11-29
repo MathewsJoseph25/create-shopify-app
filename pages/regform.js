@@ -75,13 +75,13 @@ const regForm = () => {
       const token = await getSessionToken(app);
       const header = { "X-Shopify-Access-Token": token };
       // console.log("headers ::", header);
-      console.log(
-        {
-          shop: shop,
-          serialNumber: serialNum,
-        },
-        { headers: header }
-      );
+      // console.log(
+      //   {
+      //     shop: shop,
+      //     serialNumber: serialNum,
+      //   },
+      //   { headers: header }
+      // );
 
       try {
         axios

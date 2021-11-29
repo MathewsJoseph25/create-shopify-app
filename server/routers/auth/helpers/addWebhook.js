@@ -55,7 +55,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
           .replace("http://", "")
           .split(".")[0]
       );
-      console.log("registration :: ", registrationRes);
+      // console.log("registration :: ", registrationRes);
     } catch (e) {
       console.log(e);
     }
