@@ -39,6 +39,7 @@ mongoose.set("useFindAndModify", false);
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 //init routes
