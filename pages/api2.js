@@ -34,7 +34,7 @@ export default class Index extends React.Component {
   callApi = () => {
     console.log("Sending Api Request");
     this.context.showLoadingBar();
-    window.api.get("/2").then((response) => {
+    window.api.get("/shop").then((response) => {
       console.log(response.data);
       this.context.hideLoadingBar();
     });
