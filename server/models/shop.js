@@ -6,7 +6,6 @@ const shopSchema = new Schema({
   accessToken: { type: String, default: null },
   serial: {
     type: Number,
-    unique: true,
     min: [700000000, "Serial Number starts with 7"],
     max: [800000000, "Invalid Serial Number"],
     validate: { validator: function(v){
@@ -21,6 +20,7 @@ const shopSchema = new Schema({
   nonce: { type: String, default: null },
   webhooks: { type: Object, default: {} },
   info: { type: Object, default: {} },
+  process: { type: Array, default: null}
 });
 
 const Shop = mongoose.models.shop || mongoose.model("shop", shopSchema);
