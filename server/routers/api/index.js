@@ -20,8 +20,12 @@ api.get("/shop", async (req, res) => {
       .replace("http://", "")
       .split(".")[0];
     var shopResult = await serialDetail({ shop });
-    var serial = shopResult.serial;
-    res.json({ success: true, serial }).status(200);
+    console.log(shopResult.process)
+    let resData = {
+      serial: shopResult.serial,
+      process: shopResult.process
+    }
+    res.json({ success: true, data: resData }).status(200);
   } catch (e) {
     console.log(e);
     res.json({ success: false }).status(500);
