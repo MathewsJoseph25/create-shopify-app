@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Button, Card, Form, FormLayout, TextField } from "@shopify/polaris";
 import axios from "axios";
 import { getSessionToken } from "@shopify/app-bridge-utils";
@@ -11,41 +11,37 @@ const regForm = () => {
   const [serialNum, setSerialNum] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-
-  const pushSerial = async (shop) => {
+  const [data, setData] = useState(null);
+  const getData = async () => {
+    // const app = createApp({
+    //   apiKey: process.env.API_KEY,
+    //   shopOrigin: shop,
+    //   forceRedirect: true,
+    // });
+    // const token = await getSessionToken(app);
+    // const header = { "X-Shopify-Access-Token": token };
+    // console.log('headers ::', header);
+    // console.log('shop ::', process.env.API_KEY);
     try {
-      await shop.updateOne(
-        { shop: shop },
-        { shop: shop, serial: serialNum },
-        { upsert: true }
-      );
-      console.log({ shop: shop, serial: serialNum });
-    } catch (error) {
-      console.log("Error while adding Nonce to Database: ", error);
-      return false;
-    }
-  };
-
-  const handleSubmit = useCallback(
-    (e) => {
-      e.preventDefault();
-      let errs = validate();
-      setErrors(errs);
-      setIsSubmitting(true);
-      if (serialNum % 9 === 0) {
-        console.log(serialNum);
-        alert("Thank You");
-        try {
-          pushSerial();
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        alert("Invalid Serial Number");
+      const res = await axios.get("/api/shop?shop=" + shop);
+      console.log(data);
+      if(res.data.data.serial) {
+        setData(res.data.data.serial);
+        // setIsSubmitting(true);
       }
-    },
-    [serialNum]
-  );
+    } catch(e) {
+      setData(null);
+      console.log('ee : ',e);
+    }
+  }
+
+  useEffect(() => {
+    const intialSetup = async () => {
+      await getData();
+    }
+    intialSetup();
+  }, []);
+
 
   const handleSerialChange = useCallback((value) => setSerialNum(value), []);
 
@@ -65,15 +61,15 @@ const regForm = () => {
     let errs = validate();
     setErrors(errs);
     setIsSubmitting(true);
-    if (serialNum % 9 === 0) {
-      const app = createApp({
-        apiKey: API_KEY,
-        shopOrigin: shop,
-        forceRedirect: true,
-      });
+    if (serialNum % 9 === 0 && isSubmitting && errors.length === 0) {
+      // const app = createApp({
+      //   apiKey: process.env.API_KEY,
+      //   shopOrigin: shop,
+      //   forceRedirect: true,
+      // });
       // console.log("app ::", app)
-      const token = await getSessionToken(app);
-      const header = { "X-Shopify-Access-Token": token };
+      // const token = await getSessionToken(app);
+      // const header = { "X-Shopify-Access-Token": token };
       // console.log("headers ::", header);
       // console.log(
       //   {

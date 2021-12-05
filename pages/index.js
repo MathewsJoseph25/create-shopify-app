@@ -27,20 +27,20 @@ const Index = () => {
       forceRedirect: true,
     });
     const token = await getSessionToken(app);
-    console.log('shop ::', API_KEY);
+    console.log("shop ::", API_KEY);
     try {
       const res = await axios.get("/api/shop?shop=" + shop);
       setData(res.data.data);
     } catch (e) {
       setData(null);
-      console.log('ee : ', e);
+      console.log("ee : ", e);
     }
-  }
+  };
 
   useEffect(() => {
     const intialSetup = async () => {
       await getData();
-    }
+    };
     intialSetup();
   }, []);
 
@@ -56,6 +56,21 @@ const Index = () => {
             </p>
           </Banner>
         </Layout.Section>
+        {data && data.serial ? (
+          <>
+            <Layout.Section>
+              <Heading element="h1">Serial Number : </Heading>
+              <p>
+              {data.serial}
+              </p>
+            </Layout.Section>
+            {data && data.process && (
+              <Layout.Section>
+                <p>Process Data</p>
+              </Layout.Section>
+            )}
+          </>
+        ) : null}
         <Layout.Section id="features">
           <Card title="Features">
             <Card.Section>
@@ -74,8 +89,8 @@ const Index = () => {
                   Order Process :
                   <List type="number">
                     <List.Item>
-                      Receive Orders in Tally.ERP9 / Tally Prime as soon as
-                      they are booked on Shopify
+                      Receive Orders in Tally.ERP9 / Tally Prime as soon as they
+                      are booked on Shopify
                     </List.Item>
                     <List.Item>
                       Material dispatch entry is booked in Tally.ERP9 / Tally
@@ -87,15 +102,15 @@ const Index = () => {
                       Tally.ERP9 / Tally Prime interface
                     </List.Item>
                     <List.Item>
-                      Sales Entry is booked with necessary adjustment entry
-                      for COD Partner / Payment Gateway.
+                      Sales Entry is booked with necessary adjustment entry for
+                      COD Partner / Payment Gateway.
                     </List.Item>
                     <List.Item>
                       Easy reconciliation with COD Partner / Payment Gateway
                     </List.Item>
                     <List.Item>
-                      In case Material is returned undelivered / post
-                      delivery, Automated rejection note is duly processed
+                      In case Material is returned undelivered / post delivery,
+                      Automated rejection note is duly processed
                     </List.Item>
                     <List.Item>
                       Autmoated Reversal is done for COD partner / Payment
@@ -105,51 +120,40 @@ const Index = () => {
                 </List.Item>
               </List>
             </Card.Section>
-            {
-              data && data.serial ?
-                null : <Card.Section>
+            {data && data.serial ? null : (
+              <Card.Section>
+                <TextContainer>
+                  <a>
+                    This app requires additional setup and a TCP file compiled
+                    on your Tally Serial Number, Please fill up the{" "}
+                  </a>
+                  <Link href={`/regform?shop=${window.shop}`}>
+                    <a>Registration form</a>
+                  </Link>
+                </TextContainer>
+                <Card.Section>
                   <TextContainer>
                     <a>
-                      This app requires additional setup and a TCP file compiled
-                on your Tally Serial Number, Please fill up the{" "}
+                      Click on the button below and open the console to view the
+                      data returned from server using authenticated api call.{" "}
                     </a>
-                    <Link href={`/regform?shop=${window.shop}`}>
-                      <a>Registration form</a>
+                    <Link href={`/api2?shop=${window.shop}`}>
+                      <a>Another API Demo Page</a>
                     </Link>
+                    <br />
+                    <Link href={`/introduction?shop=${window.shop}`}>
+                      <a>Introduction</a>
+                    </Link>
+                    <br />
                   </TextContainer>
                 </Card.Section>
-            }
-
+              </Card.Section>
+            )}
           </Card>
-          <p>
-            Click on the button below and open the console to view the data
-            returned from server using authenticated api call.{" "}
-          </p>
-          <Link href={`/api2?shop=${window.shop}`}>
-            <a>Another API Demo Page</a>
-          </Link>
-          <br />
-          <Link href={`/introduction?shop=${window.shop}`}>
-            <a>Introduction</a>
-          </Link>
-          <br />
         </Layout.Section>
-        {
-          data && data.serial ?
-            <>
-              <Layout.Section>
-                <Heading element="h1">Serial Number : {data.serial}</Heading>
-              </Layout.Section>
-              {
-                data && data.process &&
-                <Layout.Section>
-                  <p>Process Data</p>
-                </Layout.Section>
-              }
-            </> : null
-        }
       </Layout>
-    </Page>)
-}
+    </Page>
+  );
+};
 
 export default Index;
