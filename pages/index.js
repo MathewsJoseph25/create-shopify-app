@@ -27,9 +27,12 @@ const Index = () => {
       forceRedirect: true,
     });
     const token = await getSessionToken(app);
+    const header = { "X-Shopify-Access-Token": token };
     console.log("shop ::", API_KEY);
     try {
-      const res = await axios.get("/api/shop?shop=" + shop);
+      const res = await axios.get("/api/shop?shop=" + shop, {
+        headers: header,
+      });
       setData(res.data.data);
     } catch (e) {
       setData(null);
@@ -60,9 +63,7 @@ const Index = () => {
           <>
             <Layout.Section>
               <Heading element="h1">Serial Number : </Heading>
-              <p>
-              {data.serial}
-              </p>
+              <p>{data.serial}</p>
             </Layout.Section>
             {data && data.process && (
               <Layout.Section>

@@ -30,7 +30,7 @@ api.get("/shop", async (req, res) => {
     console.log(e);
     res.json({ success: false }).status(500);
   }
-  res.send(shopResult);
+  // res.json(shopResult);
 });
 api.post("/regform", async (req, res) => {
   //res.json({serial: '123'})
