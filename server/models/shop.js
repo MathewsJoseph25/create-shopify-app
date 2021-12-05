@@ -11,7 +11,6 @@ const shopSchema = new Schema({
     validate: { validator: function(v){
       return v % 9 === 0
     }},
-    default: null,
   },
   scopes: { type: String, default: null },
   isInstalled: { type: Boolean, default: false },

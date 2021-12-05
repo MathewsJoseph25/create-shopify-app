@@ -1,41 +1,51 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { Button, Card, Form, FormLayout, TextField } from "@shopify/polaris";
 import axios from "axios";
 import { getSessionToken } from "@shopify/app-bridge-utils";
 import createApp from "@shopify/app-bridge";
+// const Shop = require("../server/models/shop");
+
+// const pushSerial = require("../server/middleware/pushSerial")
 
 const regForm = () => {
-  const [serialNum, setSerialNum] = useState(null);
+  const [serialNum, setSerialNum] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState(null);
 
-  const getData = async () => {
-    const app = createApp({
-      apiKey: API_KEY,
-      shopOrigin: shop,
-      forceRedirect: true,
-    });
-    const token = await getSessionToken(app);
-    console.log('shop ::', API_KEY);
+  const pushSerial = async (shop) => {
     try {
-      const res = await axios.get("/api/shop?shop=" + shop);
-      setData(res.data.data.serial);
-      if(res.data.data.serial) {
-        setIsSubmitting(true);
-      }
-    } catch(e) {
-      setData(null);
-      console.log('ee : ',e);
+      await shop.updateOne(
+        { shop: shop },
+        { shop: shop, serial: serialNum },
+        { upsert: true }
+      );
+      console.log({ shop: shop, serial: serialNum });
+    } catch (error) {
+      console.log("Error while adding Nonce to Database: ", error);
+      return false;
     }
-  }
+  };
 
-  useEffect(() => {
-    const intialSetup = async () => {
-      await getData();
-    }
-    intialSetup();
-  }, []);
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
+      let errs = validate();
+      setErrors(errs);
+      setIsSubmitting(true);
+      if (serialNum % 9 === 0) {
+        console.log(serialNum);
+        alert("Thank You");
+        try {
+          pushSerial();
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        alert("Invalid Serial Number");
+      }
+    },
+    [serialNum]
+  );
 
   const handleSerialChange = useCallback((value) => setSerialNum(value), []);
 
@@ -57,12 +67,22 @@ const regForm = () => {
     setIsSubmitting(true);
     if (serialNum % 9 === 0) {
       const app = createApp({
-        apiKey: process.env.API_KEY,
+        apiKey: API_KEY,
         shopOrigin: shop,
         forceRedirect: true,
       });
+      // console.log("app ::", app)
       const token = await getSessionToken(app);
       const header = { "X-Shopify-Access-Token": token };
+      // console.log("headers ::", header);
+      // console.log(
+      //   {
+      //     shop: shop,
+      //     serialNumber: serialNum,
+      //   },
+      //   { headers: header }
+      // );
+
       try {
         axios
           .post("/api/regForm", {
@@ -71,11 +91,8 @@ const regForm = () => {
           })
           .then((response) => {
             console.log("response :: ", response);
-            alert('Saved success fully');
           })
           .catch((err) => {
-            alert('Due to server error could not save. Please try again later.')
-            setIsSubmitting(false);
             console.log("err: ", err);
           });
       } catch (e) {
@@ -86,7 +103,9 @@ const regForm = () => {
   return (
     <Form
       onSubmit={handleSubmitSerial}
+      // preventDefault={true}
       title="Registration"
+      // method="POST"
     >
       <FormLayout>
         <Card>
@@ -100,13 +119,12 @@ const regForm = () => {
               minlength={9}
               min="700000000"
               max="800000000"
-              disabled={isSubmitting}
             />
           </Card.Section>
         </Card>
         <Card>
           <Card.Section>
-            <Button primary fullWidth submit disabled={isSubmitting}>
+            <Button primary={true} fullWidth={true} submit>
               Submit
             </Button>
           </Card.Section>
