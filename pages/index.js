@@ -18,24 +18,25 @@ import createApp from "@shopify/app-bridge";
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
 const Index = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   const getData = async () => {
-    const app = createApp({
-      apiKey: API_KEY,
-      shopOrigin: shop,
-      forceRedirect: true,
-    });
-    const token = await getSessionToken(app);
-    const header = { "X-Shopify-Access-Token": token };
-    console.log("shop ::", API_KEY);
+    // const app = createApp({
+    //   apiKey: API_KEY,
+    //   shopOrigin: shop,
+    //   forceRedirect: true,
+    // });
+    // const token = await getSessionToken(app);
+    // const header = { "X-Shopify-Access-Token": token };
+    // console.log("shop ::", API_KEY);
     try {
-      const res = await axios.get("/api/shop?shop=" + shop, {
-        headers: header,
-      });
+      const res = await axios.get(
+        "/api/shop?shop=" + shop
+        // { headers: header,       }
+      );
       setData(res.data.data);
     } catch (e) {
-      setData(null);
+      setData([]);
       console.log("ee : ", e);
     }
   };
@@ -67,7 +68,11 @@ const Index = () => {
             </Layout.Section>
             {data && data.process && (
               <Layout.Section>
-                <p>Process Data</p>
+                <Heading element="h1">Process Data</Heading>
+
+                {data.process.map((id) => (
+                  <p>{data.process.id}</p>
+                ))}
               </Layout.Section>
             )}
           </>

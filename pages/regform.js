@@ -13,17 +13,17 @@ const regForm = () => {
   const [errors, setErrors] = useState({});
   const [data, setData] = useState(null);
   const getData = async () => {
-    const app = createApp({
-      apiKey: process.env.API_KEY,
-      shopOrigin: shop,
-      forceRedirect: true,
-    });
-    const token = await getSessionToken(app);
-    const header = { "X-Shopify-Access-Token": token };
-    console.log('headers ::', header);
-    console.log('shop ::', process.env.API_KEY);
+    // console.log('shop ::', global.SHOPIFY_API_KEY);
+    // const app = createApp({
+    //   apiKey: global.SHOPIFY_API_KEY,
+    //   shopOrigin: shop,
+    //   forceRedirect: true,
+    // });
+    // const token = await getSessionToken(app);
+    // const header = { "X-Shopify-Access-Token": token };
+    // console.log('headers ::', header);
     try {
-      const res = await axios.get("/api/shop?shop=" + shop, { headers: header });
+      const res = await axios.get("/api/shop?shop=" + shop);
       console.log(data);
       if(res.data.data.serial) {
         setData(res.data.data.serial);
@@ -61,22 +61,22 @@ const regForm = () => {
     let errs = validate();
     setErrors(errs);
     setIsSubmitting(true);
-    if (serialNum % 9 === 0 && isSubmitting && errors.length === 0) {
-      const app = createApp({
-        apiKey: process.env.API_KEY,
-        shopOrigin: shop,
-        forceRedirect: true,
-      });
-      console.log("app ::", app)
-      const token = await getSessionToken(app);
-      const header = { "X-Shopify-Access-Token": token };
-      console.log("headers ::", header);
+    if (serialNum % 9 === 0) {
+      // const app = createApp({
+      //   apiKey: global.SHOPIFY_API_KEY,
+      //   shopOrigin: shop,
+      //   forceRedirect: true,
+      // });
+      // console.log("app ::", app)
+      // const token = await getSessionToken(app);
+      // const header = { "X-Shopify-Access-Token": token };
+      // console.log("headers ::", header);
       console.log(
         {
           shop: shop,
           serialNumber: serialNum,
         },
-        { headers: header }
+        // { headers: header }
       );
 
       try {
