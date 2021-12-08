@@ -156,7 +156,7 @@ const Index = () => {
             </Layout.Section>
           </>
         ) : null}
-        {result.length ? (
+        {array ? (
           <>
             <Layout.Section>
               <Card>
