@@ -45,7 +45,6 @@ const Index = () => {
       setSerial(res.data.data.serial);
       // console.log(res.data.data.process);
       setProcess(res.data.data.process);
-      console.log("process :: " , process);
       var array = res.data.data.process
         ? res.data.data.process.map(
             ({ date, type, processid, status, url, systemName, ip }) => {
@@ -53,7 +52,7 @@ const Index = () => {
             }
           )
         : [];
-      console.log("array :: " , array);
+      // console.log("array :: ", array);
       setResult(array);
       setOrderRec(
         res.data.data.process.filter(function (e) {
@@ -80,11 +79,6 @@ const Index = () => {
           return e.type == "image";
         }).length
       );
-      console.log(orderRec);
-      console.log(orderDel);
-      console.log(orderRet);
-      console.log(product);
-      console.log(image);
     } catch (e) {
       setSerial(null);
       setProcess([]);
@@ -92,6 +86,13 @@ const Index = () => {
       console.log("ee : ", e);
     }
   };
+
+  console.log(orderRec);
+  console.log("process :: ", process);
+  console.log(orderDel);
+  console.log(orderRet);
+  console.log(product);
+  console.log(image);
 
   useEffect(() => {
     const intialSetup = async () => {
