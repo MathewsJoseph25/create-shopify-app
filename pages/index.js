@@ -40,9 +40,13 @@ const Index = () => {
       const res = await axios.get("/api/shop?shop=" + shop);
       setSerial(res.data.data.serial);
       setProcess(res.data.data.process);
-      var array = process.map((e) =>
-        Object.values(e).map((x) => Object.values(x).map((t) => t))
-      );
+      var array = process.map(function (e) {
+        return Object.values(e).map(function (x) {
+          return Object.values(x).map(function (t) {
+            return t;
+          });
+        });
+      });
       setResult(array);
       console.log(result);
       setOrderRec(
