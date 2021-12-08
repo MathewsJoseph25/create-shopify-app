@@ -39,7 +39,7 @@ const Index = () => {
     try {
       const res = await axios.get("/api/shop?shop=" + shop);
       setSerial(res.data.data.serial);
-      console.log(res.data.data.serial)
+      console.log(res.data.data.serial);
       setProcess(res.data.data.process);
       console.log(res.data.data.process);
       setResult(
@@ -51,6 +51,7 @@ const Index = () => {
             status,
             url,
             systemName,
+            ip,
           ]
         )
       );
