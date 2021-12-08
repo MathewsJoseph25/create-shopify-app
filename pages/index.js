@@ -52,6 +52,7 @@ const Index = () => {
           ]
         )
       );
+      console.log(result);
       setOrderRec(
         process.filter(function (e) {
           return e.type == "order" && e.status == "received";
@@ -354,10 +355,10 @@ const Index = () => {
           </Card>
         </Layout.Section>
       </Layout>
-      <Layout>
-        <Layout.Section>
-          <Card>
-            <Card.Section title="Developer">
+      <Card>
+        <Card.Section title="Developer">
+          <Layout>
+            <Layout.Section>
               <Heading>See-D Solutions</Heading>
               <br />
               <p>5, Sai Prasad Building, 1st Floor,</p>
@@ -367,10 +368,10 @@ const Index = () => {
               <p>Support : +919082048148</p>
               <br />
               <p>E-mail : info@tallyecom.in</p>
-            </Card.Section>
-          </Card>
-        </Layout.Section>
-      </Layout>
+            </Layout.Section>
+          </Layout>
+        </Card.Section>
+      </Card>
     </Page>
   );
 };
