@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
 import {
-  EmptyState,
   Form,
   FormLayout,
   TextField,
@@ -17,10 +16,7 @@ import {
   Collapsible,
 } from "@shopify/polaris";
 import Link from "next/link";
-import { AppStatus } from "../components/wrapper";
 import axios from "axios";
-import { getSessionToken } from "@shopify/app-bridge-utils";
-import createApp from "@shopify/app-bridge";
 
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
@@ -28,7 +24,7 @@ const Index = () => {
   const [serialNum, setSerialNum] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
-  const [data, setData] = useState(null);
+  // const [data, setData] = useState(null);
   const [serial, setSerial] = useState("");
   const [process, setProcess] = useState([]);
   const [result, setResult] = useState([]);
@@ -120,7 +116,6 @@ const Index = () => {
         shop: shop,
         serialNumber: serialNum,
       });
-      setSerial(serialNum);
 
       try {
         axios
@@ -134,6 +129,7 @@ const Index = () => {
       } catch (e) {
         console.log("e ::", e);
       }
+      setSerial(serialNum);
     }
   };
 
