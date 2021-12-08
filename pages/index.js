@@ -38,8 +38,9 @@ const Index = () => {
   const getData = async () => {
     try {
       const res = await axios.get("/api/shop?shop=" + shop);
-      setSerial(res.data.data.serial);
-      setProcess(res.data.data.process);
+      setSerial(res.serial);
+      console.log(serial)
+      setProcess(res.process);
       console.log(process);
       setResult(
         process.map(
