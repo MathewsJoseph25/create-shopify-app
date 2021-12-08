@@ -51,7 +51,7 @@ const Index = () => {
               return [date, type, processid, status, url, systemName, ip];
             }
           )
-        : null;
+        : [];
       console.log(array);
       setResult(array);
       setOrderRec(
