@@ -42,17 +42,9 @@ const Index = () => {
       console.log(res.data.data.serial);
       setProcess(res.data.data.process);
       console.log(res.data.data.process);
-      let arrayoarray = process.map(
-        function ({ date, type, processid, status, url, systemName, ip }) {
-          return [
-            date,
-            type,
-            processid,
-            status,
-            url,
-            systemName,
-            ip,
-          ];
+      var arrayoarray = process.map(
+        ({ date, type, processid, status, url, systemName, ip }) => {
+          return ([date, type, processid, status, url, systemName, ip]);
         }
       );
       console.log(arrayoarray);
