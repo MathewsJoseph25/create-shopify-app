@@ -38,14 +38,14 @@ const Index = () => {
   const getData = async () => {
     try {
       const res = await axios.get("/api/shop?shop=" + shop);
-      console.log(res);
-      console.log(res.data);
-      console.log(res.data.data);
-      console.log(res.data.data.serial);
+      // console.log(res);
+      // console.log(res.data);
+      // console.log(res.data.data);
+      // console.log(res.data.data.serial);
       setSerial(res.data.data.serial);
-      console.log(res.data.data.process);
+      // console.log(res.data.data.process);
       setProcess(res.data.data.process);
-      console.log(process);
+      // console.log(process);
       var array = res.data.data.process
         ? res.data.data.process.map(
             ({ date, type, processid, status, url, systemName, ip }) => {
