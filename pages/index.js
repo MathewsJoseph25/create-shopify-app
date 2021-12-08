@@ -46,8 +46,8 @@ const Index = () => {
       console.log(res.data.data.process);
       setProcess(res.data.data.process);
       console.log(process);
-      var array = process
-        ? process.map(
+      var array = res.data.data.process
+        ? res.data.data.process.map(
             ({ date, type, processid, status, url, systemName, ip }) => {
               return [date, type, processid, status, url, systemName, ip];
             }
