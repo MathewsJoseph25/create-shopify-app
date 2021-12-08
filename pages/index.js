@@ -39,16 +39,11 @@ const Index = () => {
     try {
       const res = await axios.get("/api/shop?shop=" + shop);
       setSerial(res.data.data.serial);
-      console.log(res.data.data.serial);
       setProcess(res.data.data.process);
-      console.log(res.data.data.process);
-      var arrayoarray = process.map(
-        ({ date, type, processid, status, url, systemName, ip }) => {
-          return ([date, type, processid, status, url, systemName, ip]);
-        }
+      var array = process.map((e) =>
+        Object.values(e).map((x) => Object.values(x).map((t) => t))
       );
-      console.log(arrayoarray);
-      setResult(arrayoarray);
+      setResult(array);
       console.log(result);
       setOrderRec(
         process.filter(function (e) {
