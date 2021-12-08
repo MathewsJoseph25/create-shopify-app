@@ -56,27 +56,27 @@ const Index = () => {
       console.log("array :: " , array);
       setResult(array);
       setOrderRec(
-        process.filter(function (e) {
+        res.data.data.process.filter(function (e) {
           return e.type == "order" && e.status == "received";
         }).length
       );
       setOrderDel(
-        process.filter(function (e) {
+        res.data.data.process.filter(function (e) {
           return e.type == "order" && e.status == "delivered";
         }).length
       );
       setOrderRet(
-        process.filter(function (e) {
+        res.data.data.process.filter(function (e) {
           return e.type == "order" && e.status == "returned";
         }).length
       );
       setProduct(
-        process.filter(function (e) {
+        res.data.data.process.filter(function (e) {
           return e.type == "product";
         }).length
       );
       setImage(
-        process.filter(function (e) {
+        res.data.data.process.filter(function (e) {
           return e.type == "image";
         }).length
       );
