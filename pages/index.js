@@ -45,15 +45,11 @@ const Index = () => {
       setSerial(res.data.data.serial);
       console.log(res.data.data.process);
       setProcess(res.data.data.process);
-      var array = process.map(function (e) {
-        return Object.values(e).map(function (x) {
-          return Object.values(x).map(function (t) {
-            return t;
-          });
-        });
-      });
-      console.log(result);
+      var array = process.map((e) =>
+        Object.values(e).map((x) => Object.values(x).map((t) => t))
+      );
       setResult(array);
+      console.log(result);
       setOrderRec(
         process.filter(function (e) {
           return e.type == "order" && e.status == "received";
@@ -220,7 +216,7 @@ const Index = () => {
                     >
                       <DataTable
                         columnContentTypes={[
-                          // "string",
+                          "string",
                           "date",
                           "string",
                           "string",
@@ -230,13 +226,13 @@ const Index = () => {
                           "string",
                         ]}
                         headings={[
-                          // "id",
+                          "id",
                           "Date",
                           "Type",
-                          "Status",
                           "ProcessID",
-                          "SystemName",
+                          "Status",
                           "URL",
+                          "SystemName",
                           "IP",
                         ]}
                         rows={result}
