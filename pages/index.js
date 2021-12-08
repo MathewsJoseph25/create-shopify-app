@@ -156,95 +156,95 @@ const Index = () => {
             </Layout.Section>
           </>
         ) : null}
-        <Layout.Section>
-          <Card>
-            {Product || Image || orderRec || orderDel || orderRet ? (
-              <>
+        {Product || Image || orderRec || orderDel || orderRet ? (
+          <>
+            <Layout.Section>
+              <Card>
                 <Heading element="h1">Processed Data</Heading>
-              </>
-            ) : null}
-            {Product ? (
-              <>
-                <Heading element="h3">Products Uploaded : </Heading>
-                <p>{Product}</p>
-                <br />
-              </>
-            ) : null}
-            {Image ? (
-              <>
-                <Heading element="h3">Images Uploaded : </Heading>
-                <p>{Image}</p>
-                <br />
-              </>
-            ) : null}
-            {orderRec ? (
-              <>
-                <Heading element="h3">Orders Received : </Heading>
-                <p>{orderRec}</p>
-                <br />
-              </>
-            ) : null}
-            {orderDel ? (
-              <>
-                <Heading element="h3">Orders Delivered : </Heading>
-                <p>{orderDel}</p>
-                <br />
-              </>
-            ) : null}
-            {orderRec ? (
-              <>
-                <Heading element="h3">Orders Returned : </Heading>
-                <p>{orderRet}</p>
-                <br />
-              </>
-            ) : null}
+                {Product ? (
+                  <>
+                    <Heading element="h3">Products Uploaded : </Heading>
+                    <p>{Product}</p>
+                    <br />
+                  </>
+                ) : null}
+                {Image ? (
+                  <>
+                    <Heading element="h3">Images Uploaded : </Heading>
+                    <p>{Image}</p>
+                    <br />
+                  </>
+                ) : null}
+                {orderRec ? (
+                  <>
+                    <Heading element="h3">Orders Received : </Heading>
+                    <p>{orderRec}</p>
+                    <br />
+                  </>
+                ) : null}
+                {orderDel ? (
+                  <>
+                    <Heading element="h3">Orders Delivered : </Heading>
+                    <p>{orderDel}</p>
+                    <br />
+                  </>
+                ) : null}
+                {orderRec ? (
+                  <>
+                    <Heading element="h3">Orders Returned : </Heading>
+                    <p>{orderRet}</p>
+                    <br />
+                  </>
+                ) : null}
 
-            <Card sectioned>
-              <Stack vertical>
-                <Button
-                  onClick={handleToggle}
-                  ariaExpanded={open}
-                  ariaControls="basic-collapsible"
-                >
-                  Show Processed Data
-                </Button>
-                <Collapsible
-                  open={open}
-                  id="basic-collapsible"
-                  transition={{
-                    duration: "500ms",
-                    timingFunction: "ease-in-out",
-                  }}
-                  expandOnPrint
-                >
-                  <DataTable
-                    columnContentTypes={[
-                      // "string",
-                      "date",
-                      "string",
-                      "string",
-                      "string",
-                      "string",
-                      "string",
-                      "string",
-                    ]}
-                    headings={[
-                      // "id",
-                      "Date",
-                      "Type",
-                      "ProcessID",
-                      "Status",
-                      "URL",
-                      "SystemName",
-                      "IP",
-                    ]}
-                    rows={result}
-                  />
-                </Collapsible>
-              </Stack>
-            </Card>
-          </Card>
-        </Layout.Section>
+                <Card sectioned>
+                  <Stack vertical>
+                    <Button
+                      onClick={handleToggle}
+                      ariaExpanded={open}
+                      ariaControls="basic-collapsible"
+                    >
+                      Show Processed Data
+                    </Button>
+                    <Collapsible
+                      open={open}
+                      id="basic-collapsible"
+                      transition={{
+                        duration: "500ms",
+                        timingFunction: "ease-in-out",
+                      }}
+                      expandOnPrint
+                    >
+                      <DataTable
+                        columnContentTypes={[
+                          // "string",
+                          "date",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                        ]}
+                        headings={[
+                          // "id",
+                          "Date",
+                          "Type",
+                          "ProcessID",
+                          "Status",
+                          "URL",
+                          "SystemName",
+                          "IP",
+                        ]}
+                        rows={result}
+                      />
+                    </Collapsible>
+                  </Stack>
+                </Card>
+              </Card>
+            </Layout.Section>
+          </>
+        ) : null}
         <Layout.Section id="features">
           <Card title="Features">
             <Card.Section>
