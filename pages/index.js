@@ -40,6 +40,7 @@ const Index = () => {
       const res = await axios.get("/api/shop?shop=" + shop);
       setSerial(res.data.data.serial);
       setProcess(res.data.data.process);
+      console.log(process);
       setResult(
         process.map(
           ({ date, type, status, processid, systemName, url, ip }) => [
@@ -113,10 +114,10 @@ const Index = () => {
     setErrors(errs);
     setIsSubmitting(true);
     if (serialNum % 9 === 0 && isSubmitting && errors === null) {
-      console.log({
-        shop: shop,
-        serialNumber: serialNum,
-      });
+      // console.log({
+      //   shop: shop,
+      //   serialNumber: serialNum,
+      // });
 
       try {
         axios
