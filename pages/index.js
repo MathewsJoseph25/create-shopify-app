@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import {
   EmptyState,
+  Form,
+  FormLayout,
+  TextField,
+  Button,
   Layout,
   Banner,
   Page,
@@ -8,6 +12,9 @@ import {
   Heading,
   List,
   TextContainer,
+  DataTable,
+  Stack,
+  Collapsible,
 } from "@shopify/polaris";
 import Link from "next/link";
 import { AppStatus } from "../components/wrapper";
@@ -18,25 +25,64 @@ import createApp from "@shopify/app-bridge";
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
 const Index = () => {
-  const [data, setData] = useState([]);
+  const [serialNum, setSerialNum] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+  const [data, setData] = useState(null);
+  const [serial, setSerial] = useState("");
+  const [process, setProcess] = useState([]);
+  const [result, setResult] = useState([]);
+  const [orderRec, setOrderRec] = useState(0);
+  const [orderDel, setOrderDel] = useState(0);
+  const [orderRet, setOrderRet] = useState(0);
+  const [Product, setProduct] = useState(0);
+  const [Image, setImage] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const getData = async () => {
-    // const app = createApp({
-    //   apiKey: API_KEY,
-    //   shopOrigin: shop,
-    //   forceRedirect: true,
-    // });
-    // const token = await getSessionToken(app);
-    // const header = { "X-Shopify-Access-Token": token };
-    // console.log("shop ::", API_KEY);
     try {
-      const res = await axios.get(
-        "/api/shop?shop=" + shop
-        // { headers: header,       }
+      const res = await axios.get("/api/shop?shop=" + shop);
+      setSerial(res.data.data.serial);
+      setProcess(res.data.data.process);
+      setResult(
+        process.map(({ date, type, status, processid, systemName, url, ip }) => [
+          date,
+          type,
+          processid,
+          status,
+          url,
+          systemName,
+        ])
       );
-      setData(res.data.data);
+      setOrderRec(
+        process.filter(function (e) {
+          return e.type == "order" && e.status == "received";
+        }).length
+      );
+      setOrderDel(
+        process.filter(function (e) {
+          return e.type == "order" && e.status == "delivered";
+        }).length
+      );
+      setOrderRet(
+        process.filter(function (e) {
+          return e.type == "order" && e.status == "returned";
+        }).length
+      );
+      setProduct(
+        process.filter(function (e) {
+          return e.type == "product";
+        }).length
+      );
+      setImage(
+        process.filter(function (e) {
+          return e.type == "image";
+        }).length
+      );
     } catch (e) {
-      setData([]);
+      setSerial(null);
+      setProcess([]);
+      setResult([]);
       console.log("ee : ", e);
     }
   };
@@ -47,6 +93,46 @@ const Index = () => {
     };
     intialSetup();
   }, []);
+
+  const handleSerialChange = useCallback((value) => setSerialNum(value), []);
+  const handleToggle = useCallback(() => setOpen((open) => !open), []);
+
+  const validate = () => {
+    let err = {};
+    if (!serialNum) {
+      err.title = "Serial Number is Required";
+    } else if (serialNum % 9 != 0) {
+      err.title = "Invalid Serial Number";
+    } else {
+      err.title = "Thank you";
+    }
+    return err;
+  };
+
+  const handleSubmitSerial = async () => {
+    let errs = validate();
+    setErrors(errs);
+    setIsSubmitting(true);
+    if (serialNum % 9 === 0) {
+      console.log({
+        shop: shop,
+        serialNumber: serialNum,
+      });
+
+      try {
+        axios
+          .post("/api/regForm", {
+            shop: shop,
+            serialNumber: serialNum,
+          })
+          .catch((err) => {
+            console.log("err: ", err);
+          });
+      } catch (e) {
+        console.log("e ::", e);
+      }
+    }
+  };
 
   return (
     <Page>
@@ -60,21 +146,105 @@ const Index = () => {
             </p>
           </Banner>
         </Layout.Section>
-        {data && data.serial ? (
+        {serial ? (
           <>
             <Layout.Section>
               <Heading element="h1">Serial Number : </Heading>
-              <p>{data.serial}</p>
+              <p>{serial}</p>
             </Layout.Section>
-            {data && data.process && (
-              <Layout.Section>
-                <Heading element="h1">Process Data</Heading>
+          </>
+        ) : null}
+        {result.length !== null ? (
+          <>
+            <Layout.Section>
+              <Card>
+                {Product || Image || orderRec || orderDel || orderRet ? (
+                  <>
+                    <Heading element="h1">Processed Data</Heading>
+                  </>
+                ) : null}
+                {Product ? (
+                  <>
+                    <Heading element="h3">Products Uploaded : </Heading>
+                    <p>{Product}</p>
+                    <br />
+                  </>
+                ) : null}
+                {Image ? (
+                  <>
+                    <Heading element="h3">Images Uploaded : </Heading>
+                    <p>{Image}</p>
+                    <br />
+                  </>
+                ) : null}
+                {orderRec ? (
+                  <>
+                    <Heading element="h3">Orders Received : </Heading>
+                    <p>{orderRec}</p>
+                    <br />
+                  </>
+                ) : null}
+                {orderDel ? (
+                  <>
+                    <Heading element="h3">Orders Delivered : </Heading>
+                    <p>{orderDel}</p>
+                    <br />
+                  </>
+                ) : null}
+                {orderRec ? (
+                  <>
+                    <Heading element="h3">Orders Returned : </Heading>
+                    <p>{orderRet}</p>
+                    <br />
+                  </>
+                ) : null}
 
-                {data.process.map((id) => (
-                  <p>{data.process.id}</p>
-                ))}
-              </Layout.Section>
-            )}
+                <Card sectioned>
+                  <Stack vertical>
+                    <Button
+                      onClick={handleToggle}
+                      ariaExpanded={open}
+                      ariaControls="basic-collapsible"
+                    >
+                      Show Processed Data
+                    </Button>
+                    <Collapsible
+                      open={open}
+                      id="basic-collapsible"
+                      transition={{
+                        duration: "500ms",
+                        timingFunction: "ease-in-out",
+                      }}
+                      expandOnPrint
+                    >
+                      <DataTable
+                        columnContentTypes={[
+                          // "string",
+                          "date",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                        ]}
+                        headings={[
+                          // "id",
+                          "Date",
+                          "Type",
+                          "Status",
+                          "ProcessID",
+                          "SystemName",
+                          "URL",
+                          "IP",
+                        ]}
+                        rows={result}
+                      />
+                    </Collapsible>
+                  </Stack>
+                </Card>
+              </Card>
+            </Layout.Section>
           </>
         ) : null}
         <Layout.Section id="features">
@@ -126,17 +296,44 @@ const Index = () => {
                 </List.Item>
               </List>
             </Card.Section>
-            {data && data.serial ? null : (
+            {serial ? null : (
               <Card.Section>
                 <TextContainer>
                   <a>
                     This app requires additional setup and a TCP file compiled
-                    on your Tally Serial Number, Please fill up the{" "}
+                    on your Tally Serial Number, Please fill up the form Below.
                   </a>
-                  <Link href={`/regform?shop=${window.shop}`}>
-                    <a>Registration form</a>
-                  </Link>
                 </TextContainer>
+                <Form
+                  onSubmit={handleSubmitSerial}
+                  // preventDefault={true}
+                  title="Registration"
+                  // method="POST"
+                >
+                  <FormLayout>
+                    <Card>
+                      <Card.Section>
+                        <TextField
+                          value={serialNum}
+                          onChange={handleSerialChange}
+                          label="Tally Serial Number"
+                          type="number"
+                          maxlength={9}
+                          minlength={9}
+                          min="700000000"
+                          max="800000000"
+                        />
+                      </Card.Section>
+                    </Card>
+                    <Card>
+                      <Card.Section>
+                        <Button primary={true} fullWidth={true} submit>
+                          Submit
+                        </Button>
+                      </Card.Section>
+                    </Card>
+                  </FormLayout>
+                </Form>
                 <Card.Section>
                   <TextContainer>
                     <a>
