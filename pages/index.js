@@ -221,7 +221,7 @@ const Index = () => {
                     >
                       <DataTable
                         columnContentTypes={[
-                          "string",
+                          // "string",
                           "date",
                           "string",
                           "string",
@@ -231,7 +231,7 @@ const Index = () => {
                           "string",
                         ]}
                         headings={[
-                          "id",
+                          // "id",
                           "Date",
                           "Type",
                           "ProcessID",
