@@ -44,7 +44,7 @@ const Index = () => {
       // console.log(res.data.data.serial);
       setSerial(res.data.data.serial);
       // console.log(res.data.data.process);
-      setProcess(res.data.data.process);
+      setProcess([res.data.data.process]);
       // console.log(process);
       var array = res.data.data.process
         ? res.data.data.process.map(
