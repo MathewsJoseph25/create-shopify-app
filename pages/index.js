@@ -42,18 +42,20 @@ const Index = () => {
       console.log(res.data.data.serial);
       setProcess(res.data.data.process);
       console.log(res.data.data.process);
-      var arrayoarray = process.map(function ({
-        date,
-        type,
-        processid,
-        status,
-        url,
-        systemName,
-        ip,
-      }) {
-        return [date, type, processid, status, url, systemName, ip];
-      });
-      console.log(arrayoarray)
+      let arrayoarray = process.map(
+        function ({ date, type, processid, status, url, systemName, ip }) {
+          return [
+            date,
+            type,
+            processid,
+            status,
+            url,
+            systemName,
+            ip,
+          ];
+        }
+      );
+      console.log(arrayoarray);
       setResult(arrayoarray);
       console.log(result);
       setOrderRec(
