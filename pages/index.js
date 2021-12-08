@@ -87,8 +87,8 @@ const Index = () => {
     }
   };
 
-  console.log(orderRec);
   console.log("process :: ", process);
+  console.log(orderRec);
   console.log(orderDel);
   console.log(orderRet);
   console.log(product);
