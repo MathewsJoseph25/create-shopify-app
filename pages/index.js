@@ -31,8 +31,8 @@ const Index = () => {
   const [orderRec, setOrderRec] = useState(0);
   const [orderDel, setOrderDel] = useState(0);
   const [orderRet, setOrderRet] = useState(0);
-  const [Product, setProduct] = useState(0);
-  const [Image, setImage] = useState(0);
+  const [product, setProduct] = useState(0);
+  const [image, setImage] = useState(0);
   const [open, setOpen] = useState(false);
 
   const getData = async () => {
@@ -44,8 +44,8 @@ const Index = () => {
       // console.log(res.data.data.serial);
       setSerial(res.data.data.serial);
       // console.log(res.data.data.process);
-      setProcess([res.data.data.process]);
-      // console.log(process);
+      setProcess(res.data.data.process);
+      console.log("process :: " , process);
       var array = res.data.data.process
         ? res.data.data.process.map(
             ({ date, type, processid, status, url, systemName, ip }) => {
@@ -53,7 +53,7 @@ const Index = () => {
             }
           )
         : [];
-      console.log(array);
+      console.log("array :: " , array);
       setResult(array);
       setOrderRec(
         process.filter(function (e) {
@@ -84,7 +84,7 @@ const Index = () => {
       console.log(orderDel);
       console.log(orderRet);
       console.log(product);
-      console.log(Image);
+      console.log(image);
     } catch (e) {
       setSerial(null);
       setProcess([]);
@@ -161,22 +161,22 @@ const Index = () => {
             </Layout.Section>
           </>
         ) : null}
-        {Product || Image || orderRec || orderDel || orderRet ? (
+        {product || image || orderRec || orderDel || orderRet ? (
           <>
             <Layout.Section>
               <Card>
                 <Heading element="h1">Processed Data</Heading>
-                {Product ? (
+                {product ? (
                   <>
                     <Heading element="h3">Products Uploaded : </Heading>
-                    <p>{Product}</p>
+                    <p>{product}</p>
                     <br />
                   </>
                 ) : null}
-                {Image ? (
+                {image ? (
                   <>
                     <Heading element="h3">Images Uploaded : </Heading>
-                    <p>{Image}</p>
+                    <p>{image}</p>
                     <br />
                   </>
                 ) : null}
