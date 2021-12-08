@@ -45,6 +45,7 @@ const Index = () => {
       setSerial(res.data.data.serial);
       console.log(res.data.data.process);
       setProcess(res.data.data.process);
+      console.log(process);
       var array = process
         ? process.map(
             ({ date, type, processid, status, url, systemName, ip }) => {
