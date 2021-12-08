@@ -8,7 +8,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
   const header = {
     "X-Shopify-Access-Token": accessToken,
   };
-  console.log(accessToken);
+  // console.log(accessToken);
   for (var i = 0; i < webhooks.length; i++) {
     //setting the data value to check at later stage if webhook was created successfully or not.
     const webhookHandle = webhooks[i].replace("/", "_");
@@ -21,7 +21,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
         format: "json",
       }
     };
-    console.log(topic);
+    // console.log(topic);
     try {
       //creating the webhook
       let webhook = await axios({

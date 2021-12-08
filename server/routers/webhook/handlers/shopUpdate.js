@@ -9,8 +9,7 @@ const shopUpdate = async (payload, shop) => {
       { info: payload }
     );
   } catch (error) {
-    console.log("Error while Webhook - Shop Update");
-    console.log(error);
+    console.log("Error while Webhook - Shop Update ::", error);
   }
 };
 

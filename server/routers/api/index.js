@@ -23,7 +23,7 @@ api.get("/shop", async (req, res) => {
       .split(".")[0];
     // console.log(shop);
     var shopResult = await serialDetail({ shop });
-    console.log(shopResult.process);
+    // console.log(shopResult.process);
     let resData = {
       serial: shopResult.serial,
       process: shopResult.process,
@@ -36,7 +36,7 @@ api.get("/shop", async (req, res) => {
   // res.json(shopResult);
 });
 api.post("/process", async (req, res) => {
-  console.log("in api call");
+  // console.log("in api call");
   try {
     let processRes = await process(
       req.body.shop
@@ -52,8 +52,8 @@ api.post("/process", async (req, res) => {
 });
 api.post("/regform", async (req, res) => {
   //res.json({serial: '123'})
-  console.log("in api call");
-  console.log(req);
+  // console.log("in api call");
+  // console.log(req);
   try {
     let registrationRes = await registration(
       req.body.shop

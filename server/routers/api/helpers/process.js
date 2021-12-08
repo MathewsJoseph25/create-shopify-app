@@ -2,8 +2,8 @@ const Shop = require("../../../models/shop");
 const nonceCreate = require("nonce")();
 
 const process = async (shop, process) => {
-  console.log(shop);
-  console.log(process);
+  // console.log(shop);
+  // console.log(process);
   let nonce = nonceCreate();
   try {
     await Shop.findOneAndUpdate(
