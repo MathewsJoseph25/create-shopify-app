@@ -80,6 +80,11 @@ const Index = () => {
           return e.type == "image";
         }).length
       );
+      console.log(orderRec);
+      console.log(orderDel);
+      console.log(orderRet);
+      console.log(product);
+      console.log(Image);
     } catch (e) {
       setSerial(null);
       setProcess([]);
