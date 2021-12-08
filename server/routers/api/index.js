@@ -24,11 +24,11 @@ api.get("/shop", async (req, res) => {
     // console.log(shop);
     var shopResult = await serialDetail({ shop });
     // console.log(shopResult.process);
-    let resData = {
+    let data = {
       serial: shopResult.serial,
       process: shopResult.process,
     };
-    res.json({ success: true, data: resData }).status(200);
+    res.json({ success: true, data }).status(200);
   } catch (e) {
     console.log(e);
     res.json({ success: false }).status(500);
