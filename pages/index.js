@@ -44,15 +44,17 @@ const Index = () => {
       console.log(res.data.data.process);
       setResult(
         process.map(
-          ({ date, type, status, processid, systemName, url, ip }) => [
-            date,
-            type,
-            processid,
-            status,
-            url,
-            systemName,
-            ip,
-          ]
+          function ({ date, type, processid, status, url, systemName, ip }) {
+            return [
+              date,
+              type,
+              processid,
+              status,
+              url,
+              systemName,
+              ip,
+            ];
+          }
         )
       );
       console.log(result);
