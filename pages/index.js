@@ -38,7 +38,12 @@ const Index = () => {
   const getData = async () => {
     try {
       const res = await axios.get("/api/shop?shop=" + shop);
+      console.log(res);
+      console.log(res.data);
+      console.log(res.data.data);
+      console.log(res.data.data.serial);
       setSerial(res.data.data.serial);
+      console.log(res.data.data.process);
       setProcess(res.data.data.process);
       var array = process.map(function (e) {
         return Object.values(e).map(function (x) {
@@ -47,8 +52,8 @@ const Index = () => {
           });
         });
       });
-      setResult(array);
       console.log(result);
+      setResult(array);
       setOrderRec(
         process.filter(function (e) {
           return e.type == "order" && e.status == "received";
