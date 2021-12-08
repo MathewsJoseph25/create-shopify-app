@@ -45,11 +45,13 @@ const Index = () => {
       setSerial(res.data.data.serial);
       console.log(res.data.data.process);
       setProcess(res.data.data.process);
-      var array = process.map(
-        ({ date, type, processid, status, url, systemName, ip }) => {
-          return [date, type, processid, status, url, systemName, ip];
-        }
-      );
+      var array = process
+        ? process.map(
+            ({ date, type, processid, status, url, systemName, ip }) => {
+              return [date, type, processid, status, url, systemName, ip];
+            }
+          )
+        : null;
       console.log(array);
       setResult(array);
       setOrderRec(
