@@ -29,6 +29,7 @@ api.get("/shop", async (req, res) => {
       process: shopResult.process,
     };
     res.json({ success: true, data }).status(200);
+    console.log(data);
   } catch (e) {
     console.log(e);
     res.json({ success: false }).status(500);
