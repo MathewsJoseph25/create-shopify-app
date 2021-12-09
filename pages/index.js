@@ -160,89 +160,87 @@ const Index = () => {
             {product || image || orderRec || orderDel || orderRet ? (
               <>
                 <Layout.Section>
-                  <Card>
-                    <Heading element="h1">Data Synchronised with Tally till Date</Heading>
-                    {product ? (
-                      <>
-                        <Heading element="h3">Products Uploaded : </Heading>
-                        <p>{product}</p>
-                        <br />
-                      </>
-                    ) : null}
-                    {image ? (
-                      <>
-                        <Heading element="h3">Images Uploaded : </Heading>
-                        <p>{image}</p>
-                        <br />
-                      </>
-                    ) : null}
-                    {orderRec ? (
-                      <>
-                        <Heading element="h3">Orders Received : </Heading>
-                        <p>{orderRec}</p>
-                        <br />
-                      </>
-                    ) : null}
-                    {orderDel ? (
-                      <>
-                        <Heading element="h3">Orders Delivered : </Heading>
-                        <p>{orderDel}</p>
-                        <br />
-                      </>
-                    ) : null}
-                    {orderRec ? (
-                      <>
-                        <Heading element="h3">Orders Returned : </Heading>
-                        <p>{orderRet}</p>
-                        <br />
-                      </>
-                    ) : null}
+                  <Heading element="h1">
+                    Data Synchronised with Tally till Date
+                  </Heading>
+                  {product ? (
+                    <>
+                      <Heading element="h3">Products Uploaded : </Heading>
+                      <p>{product}</p>
+                      <br />
+                    </>
+                  ) : null}
+                  {image ? (
+                    <>
+                      <Heading element="h3">Images Uploaded : </Heading>
+                      <p>{image}</p>
+                      <br />
+                    </>
+                  ) : null}
+                  {orderRec ? (
+                    <>
+                      <Heading element="h3">Orders Received : </Heading>
+                      <p>{orderRec}</p>
+                      <br />
+                    </>
+                  ) : null}
+                  {orderDel ? (
+                    <>
+                      <Heading element="h3">Orders Delivered : </Heading>
+                      <p>{orderDel}</p>
+                      <br />
+                    </>
+                  ) : null}
+                  {orderRec ? (
+                    <>
+                      <Heading element="h3">Orders Returned : </Heading>
+                      <p>{orderRet}</p>
+                      <br />
+                    </>
+                  ) : null}
 
-                    <Card sectioned>
-                      {/* <Stack vertical> */}
-                        <Button
-                          onClick={handleToggle}
-                          ariaExpanded={open}
-                          ariaControls="basic-collapsible"
-                        >
-                          Show Processed Data
-                        </Button>
-                        <Collapsible
-                          open={open}
-                          id="basic-collapsible"
-                          transition={{
-                            duration: "500ms",
-                            timingFunction: "ease-in-out",
-                          }}
-                          expandOnPrint
-                        >
-                          <DataTable
-                            columnContentTypes={[
-                              // "string",
-                              "date",
-                              "string",
-                              "string",
-                              "string",
-                              "string",
-                              "string",
-                              "string",
-                            ]}
-                            headings={[
-                              // "id",
-                              "Date",
-                              "Type",
-                              "ProcessID",
-                              "Status",
-                              "URL",
-                              "SystemName",
-                              "IP",
-                            ]}
-                            rows={result}
-                          />
-                        </Collapsible>
-                      {/* </Stack> */}
-                    </Card>
-                  </Card>
+                  <Layout sectioned>
+                    <Button
+                      onClick={handleToggle}
+                      ariaExpanded={open}
+                      ariaControls="basic-collapsible"
+                    >
+                      Show Processed Data
+                    </Button>
+                    <Collapsible
+                      open={open}
+                      id="basic-collapsible"
+                      transition={{
+                        duration: "500ms",
+                        timingFunction: "ease-in-out",
+                      }}
+                      expandOnPrint
+                    >
+                      <DataTable
+                        columnContentTypes={[
+                          // "string",
+                          "date",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                          "string",
+                        ]}
+                        headings={[
+                          // "id",
+                          "Date",
+                          "Type",
+                          "ProcessID",
+                          "Status",
+                          "URL",
+                          "SystemName",
+                          "IP",
+                        ]}
+                        rows={result}
+                      />
+                    </Collapsible>
+                  </Layout>
                 </Layout.Section>
               </>
             ) : null}
