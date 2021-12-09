@@ -15,6 +15,7 @@ import {
   Stack,
   Collapsible,
   TextStyle,
+  Subheading,
 } from "@shopify/polaris";
 import Link from "next/link";
 
@@ -40,7 +41,7 @@ export class gdpr extends Component {
                   </Heading>
                   <br />
                   <br />
-                  <TextContainer>
+                  <a>
                     We know that you care how information about you is used and
                     shared, and we appreciate your trust that we will do so
                     carefully and sensibly. This Privacy Notice describes how
@@ -60,22 +61,20 @@ export class gdpr extends Component {
                     Privacy Notice will be collected and retained by See-D
                     Solutions, 5, Sai Prasad Building, 1st Floor, Tarabaug, 3rd
                     Mamletdarwadi, Malad (West), Mumbai – 400064.
-                  </TextContainer>
+                  </a>
                   <br />
                   <Heading element="h4">
                     What Personal Information About Customers Does Tallyecom
                     Collect?
                   </Heading>
                   <br />
-                  <TextContainer>
+                  <a>
                     We collect your personal information in order to provide and
                     continually improve our products and services.
                     <br />
                     Here are the types of personal information we collect:
                     <br />
-                    <TextStyle variation="strong">
-                      Information You Give Us:
-                    </TextStyle>
+                    <Subheading element="h5">Information You Give Us:</Subheading>
                     <br />
                     We receive and store any information you provide in relation
                     to Tallyecom Services. Click here to see examples of what we
@@ -83,9 +82,7 @@ export class gdpr extends Component {
                     but then you might not be able to take advantage of many of
                     our Tallyecom Services.
                     <br />
-                    <TextStyle variation="strong">
-                      Automatic Information:
-                    </TextStyle>
+                    <Subheading element="h5">Automatic Information:</Subheading>
                     <br />
                     We automatically collect and store certain types of
                     information about your use of Tallyecom Services, including
@@ -96,7 +93,7 @@ export class gdpr extends Component {
                     accesses Tallyecom Services and other content served by or
                     on behalf of Tallyecom on other websites. Click here to see
                     examples of what we collect.
-                  </TextContainer>
+                  </a>
                 </Layout.Section>
               </Layout>
             </Card.Section>
