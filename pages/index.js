@@ -289,7 +289,7 @@ const Index = () => {
                     Automated rejection note is duly processed
                   </List.Item>
                   <List.Item>
-                    Autmoated Reversal is done for COD partner / Payment Gateway
+                    Automated Reversal is done for COD partner / Payment Gateway
                   </List.Item>
                 </List>
               </List.Item>
