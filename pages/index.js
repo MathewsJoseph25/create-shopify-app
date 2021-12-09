@@ -87,13 +87,6 @@ const Index = () => {
     }
   };
 
-  console.log("process :: ", process);
-  console.log("Orders Received :: ", orderRec);
-  console.log("Orders Delivered :: ", orderDel);
-  console.log("Orders Returned :: ", orderRet);
-  console.log("Products Uploaded :: ", product);
-  console.log("Images Uploaded :: ", image);
-
   useEffect(() => {
     const intialSetup = async () => {
       await getData();
