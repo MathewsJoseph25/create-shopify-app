@@ -60,8 +60,8 @@ function MyApp({ Component, pageProps, router }) {
         <script>
           <meta
             http-equiv="Content-Security-Policy"
-            content="frame-src https://*.shopify.com https://*.myshopify.com self;"
-          />
+            content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; base-uri 'self' https://admin.myshopify.com; "
+          ></meta>
         </script>
       </Head>
       <Provider config={config}>
