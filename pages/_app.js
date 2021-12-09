@@ -57,6 +57,12 @@ function MyApp({ Component, pageProps, router }) {
       <Head>
         <title>Shopify App</title>
         <meta charSet="utf-8" />
+        <script>
+          <meta
+            http-equiv="Content-Security-Policy"
+            content="frame-src https://*.shopify.com https://*.myshopify.com self;"
+          />
+        </script>
       </Head>
       <Provider config={config}>
         <AppProvider i18n={translations}>
