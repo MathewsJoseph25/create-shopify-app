@@ -161,9 +161,7 @@ const Index = () => {
               <>
                 <Layout.Section>
                   <Card>
-                    <Heading element="h1">
-                      Data Synchronised with Tally till Date
-                    </Heading>
+                    <Heading element="h1">Data Synchronised with Tally till Date</Heading>
                     {product ? (
                       <>
                         <Heading element="h3">Products Uploaded : </Heading>
@@ -200,50 +198,50 @@ const Index = () => {
                       </>
                     ) : null}
 
-                    {/* <Card sectioned> */}
-                    {/* <Stack vertical> */}
-                    <Button
-                      onClick={handleToggle}
-                      ariaExpanded={open}
-                      ariaControls="basic-collapsible"
-                    >
-                      Show Processed Data
-                    </Button>
-                    <Collapsible
-                      open={open}
-                      id="basic-collapsible"
-                      transition={{
-                        duration: "500ms",
-                        timingFunction: "ease-in-out",
-                      }}
-                      expandOnPrint
-                    >
-                      <DataTable
-                        columnContentTypes={[
-                          // "string",
-                          "date",
-                          "string",
-                          "string",
-                          "string",
-                          "string",
-                          "string",
-                          "string",
-                        ]}
-                        headings={[
-                          // "id",
-                          "Date",
-                          "Type",
-                          "ProcessID",
-                          "Status",
-                          "URL",
-                          "SystemName",
-                          "IP",
-                        ]}
-                        rows={result}
-                      />
-                    </Collapsible>
-                    {/* </Stack> */}
-                    {/* </Card> */}
+                    <Card sectioned>
+                      {/* <Stack vertical> */}
+                        <Button
+                          onClick={handleToggle}
+                          ariaExpanded={open}
+                          ariaControls="basic-collapsible"
+                        >
+                          Show Processed Data
+                        </Button>
+                        <Collapsible
+                          open={open}
+                          id="basic-collapsible"
+                          transition={{
+                            duration: "500ms",
+                            timingFunction: "ease-in-out",
+                          }}
+                          expandOnPrint
+                        >
+                          <DataTable
+                            columnContentTypes={[
+                              // "string",
+                              "date",
+                              "string",
+                              "string",
+                              "string",
+                              "string",
+                              "string",
+                              "string",
+                            ]}
+                            headings={[
+                              // "id",
+                              "Date",
+                              "Type",
+                              "ProcessID",
+                              "Status",
+                              "URL",
+                              "SystemName",
+                              "IP",
+                            ]}
+                            rows={result}
+                          />
+                        </Collapsible>
+                      {/* </Stack> */}
+                    </Card>
                   </Card>
                 </Layout.Section>
               </>
