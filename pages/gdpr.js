@@ -14,6 +14,7 @@ import {
   DataTable,
   Stack,
   Collapsible,
+  TextStyle,
 } from "@shopify/polaris";
 import Link from "next/link";
 
@@ -59,6 +60,42 @@ export class gdpr extends Component {
                     Privacy Notice will be collected and retained by See-D
                     Solutions, 5, Sai Prasad Building, 1st Floor, Tarabaug, 3rd
                     Mamletdarwadi, Malad (West), Mumbai – 400064.
+                  </TextContainer>
+                  <br />
+                  <Heading element="h4">
+                    What Personal Information About Customers Does Tallyecom
+                    Collect?
+                  </Heading>
+                  <br />
+                  <TextContainer>
+                    We collect your personal information in order to provide and
+                    continually improve our products and services.
+                    <br />
+                    Here are the types of personal information we collect:
+                    <br />
+                    <TextStyle variation="strong">
+                      Information You Give Us:
+                    </TextStyle>
+                    <br />
+                    We receive and store any information you provide in relation
+                    to Tallyecom Services. Click here to see examples of what we
+                    collect. You can choose not to provide certain information,
+                    but then you might not be able to take advantage of many of
+                    our Tallyecom Services.
+                    <br />
+                    <TextStyle variation="strong">
+                      Automatic Information:
+                    </TextStyle>
+                    <br />
+                    We automatically collect and store certain types of
+                    information about your use of Tallyecom Services, including
+                    information about your interaction with content and services
+                    available through Tallyecom Services. Like many websites, we
+                    use cookies and other unique identifiers, and we obtain
+                    certain types of information when your web browser or device
+                    accesses Tallyecom Services and other content served by or
+                    on behalf of Tallyecom on other websites. Click here to see
+                    examples of what we collect.
                   </TextContainer>
                 </Layout.Section>
               </Layout>
