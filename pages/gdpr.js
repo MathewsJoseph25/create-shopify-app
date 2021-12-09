@@ -23,7 +23,8 @@ export class gdpr extends Component {
   render() {
     return (
       <>
-        <Page>
+      <iframe src="http://docs.google.com/gview?url=http://remote.url.tld/path/to/document.doc&embedded=true"></iframe>
+        {/* <Page>
           <Card>
             <Card.Section title="Privacy Policy">
               <Layout>
@@ -98,7 +99,7 @@ export class gdpr extends Component {
               </Layout>
             </Card.Section>
           </Card>
-        </Page>
+        </Page> */}
       </>
     );
   }
