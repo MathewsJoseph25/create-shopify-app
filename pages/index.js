@@ -138,14 +138,14 @@ const Index = () => {
   return (
     <Page>
       <Card>
-        <Card.Section title="Data Synchronised with Tally">
+        <Card.Section title="Simplified E-Commerce Accounting - Synchronise Data with Tally">
           <Layout>
             <Layout.Section>
               <Banner>
-                <Heading element="h1">Simplified E-Commerce Accounting</Heading>
                 <p>
                   Create Products, Manage Customers, Track Orders, Keep Accutate
-                  Records, Easy Statutory Compliances
+                  Records, Easy Statutory Compliances - Use Tally.ERP9 / Tally
+                  Prime to Manage your Accounting & Statutory Compliances
                 </p>
               </Banner>
             </Layout.Section>
