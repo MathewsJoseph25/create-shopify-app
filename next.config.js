@@ -29,10 +29,6 @@ module.exports = withCSS({
             key: "Content-Security-Policy",
             value: "frame-ancestors https://*.myshopify.com",
           },
-          {
-            key: "Content-Security-Policy",
-            value: "frame-ancestors https://tallyecomwithjwt.herokuapp.com",
-          },
         ],
       },
     ];
