@@ -46,8 +46,6 @@ mongoose.connect(MONGODB_URI, {
 const authRoutes = require("./routers/auth");
 const apiRoutes = require("./routers/api");
 const webhookRoutes = require("./routers/webhook");
-const shop = req.header("X-Shopify-Shop-Domain");
-console.log(shop);
 
 //Serve static assets without auth
 server.get("/_next/*", (req, res) => {
@@ -62,9 +60,17 @@ server.use("/api", express.json(), apiRoutes);
 
 //Content Security Policy
 server.use(function (req, res, next) {
+  console.log("Params :: ", req.params.shop);
+  console.log("body :: ", req.body.shop);
+  console.log("url :: ", req.url)
   res.setHeader(
     "Content-Security-Policy",
-    "frame-ancestors https://*.myshopify.com https://admin.shopify.com" 
+    "frame-ancestors https://*.myshopify.com https://admin.shopify.com " +
+      req.params.shop +
+      " " +
+      req.body.shop +
+      " " +
+      req.url
   );
   next();
 });
