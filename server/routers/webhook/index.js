@@ -2,6 +2,9 @@ const webhooks = require("express").Router();
 const verifyWebhook = require("./helpers/verifyWebhook");
 const handleAppUninstall = require("./handlers/appUninstall");
 const handleShopUpdate = require("./handlers/shopUpdate");
+const handleShopDelete = require("./handlers/shopredact");
+const handleCustomersDataRequest = require("./handlers/CustomersDataRequest");
+const handleCustomersRedact = require("./handlers/customersRedact");
 
 webhooks.post("/", (req, res) => {
   // Verify
@@ -25,6 +28,15 @@ webhooks.post("/", (req, res) => {
       break;
     case "shop/update":
       handleShopUpdate(payload, shop);
+      break;
+    case "customers/data_request":
+      handleCustomersDataRequest(payload, shop);
+      break;
+    case "customers/redact":
+      handleCustomersRedact(payload, shop);
+      break;
+    case "shop/redact":
+      handleShopDelete(payload, shop);
       break;
   }
 });

@@ -60,7 +60,7 @@ function MyApp({ Component, pageProps, router }) {
           <meta charSet="utf-8" />
           <meta
             http-equiv="Content-Security-Policy"
-            content="frame-ancestors 'self' https://admin.shopify.com;"
+            content="frame-ancestors 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com;"
           />
         </Head>
         <Provider config={config}>
