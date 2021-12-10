@@ -58,6 +58,15 @@ server.use("/auth", authRoutes);
 //Api Url
 server.use("/api", express.json(), apiRoutes);
 
+//Content Security Policy
+server.use(function (req, res, next) {
+  res.setHeader(
+    "Content-Security-Policy",
+    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com " +
+      shop
+  );
+  next();
+});
 //Webhook Url
 server.use(
   "/webhooks",
