@@ -113,7 +113,7 @@ const Index = () => {
     let errs = validate();
     setErrors(errs);
     setIsSubmitting(true);
-    if (serialNum % 9 === 0 && isSubmitting && errors === null) {
+    if (serialNum % 9 === 0 && isSubmitting && !errors) {
       // console.log({
       //   shop: shop,
       //   serialNumber: serialNum,
