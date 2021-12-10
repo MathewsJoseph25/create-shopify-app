@@ -25,10 +25,6 @@ module.exports = withCSS({
             key: "Content-Security-Policy",
             value: "frame-ancestors https://admin.myshopify.com",
           },
-          {
-            key: "Content-Security-Policy",
-            value: "frame-ancestors https://*.myshopify.com",
-          },
         ],
       },
     ];
