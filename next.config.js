@@ -12,16 +12,29 @@ module.exports = withCSS({
     config.plugins.push(new webpack.DefinePlugin(env));
     return config;
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors self",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors https://*.myshopify.com",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors https://cambridgetestshop.myshopify.com",
+          },
+          {
+            key: "Content-Security-Policy",
+            value: "frame-ancestors https://admin.myshopify.com",
+          },
+        ],
+      },
+    ];
+  },
 });
-
-const securityHeaders = [{
-  key:'Content-Security-Policy',
-  value: "frame-ancestors self https://*.myshopify.com https://cambridgetestshop.myshopify.com https://admin.myshopify.com;"
-}]
-module.exports = {async headers(){
-  return[{
-    source:'/(.*)'
-    headers: securityHeaders
-  }]
-}
-}
