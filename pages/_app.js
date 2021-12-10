@@ -53,26 +53,25 @@ function MyApp({ Component, pageProps, router }) {
   window.shop = router.query.shop;
 
   return (
-    <React.Fragment>
-      <Head>
-        <title>Shopify App</title>
-        <meta charSet="utf-8" />
-        <script>
-          <meta
-            http-equiv="Content-Security-Policy"
-            content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; base-uri 'self' https://admin.myshopify.com; "
-          ></meta>
-        </script>
-      </Head>
-      <Provider config={config}>
-        <AppProvider i18n={translations}>
-          <InitAuthSettings></InitAuthSettings>
-          <AppWrapper>
-            <Component {...pageProps} />
-          </AppWrapper>
-        </AppProvider>
-      </Provider>
-    </React.Fragment>
+    <>
+      <React.Fragment>
+        <Head>
+          <title>Shopify App</title>
+          <meta charSet="utf-8" />
+          <script>
+            Content-Security-Policy: frame-ancestors 'self' https://admin.shopify.com;
+          </script>
+        </Head>
+        <Provider config={config}>
+          <AppProvider i18n={translations}>
+            <InitAuthSettings></InitAuthSettings>
+            <AppWrapper>
+              <Component {...pageProps} />
+            </AppWrapper>
+          </AppProvider>
+        </Provider>
+      </React.Fragment>
+    </>
   );
 }
 export default MyApp;
