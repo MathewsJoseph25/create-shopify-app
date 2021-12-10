@@ -13,3 +13,15 @@ module.exports = withCSS({
     return config;
   },
 });
+
+const securityHeaders = [{
+  key:'Content-Security-Policy',
+  value: "frame-ancestors self https://*.myshopify.com https://cambridgetestshop.myshopify.com https://admin.myshopify.com;"
+}]
+module.exports = {async headers(){
+  return[{
+    source:'/(.*)'
+    headers: securityHeaders
+  }]
+}
+}
