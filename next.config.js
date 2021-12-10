@@ -27,7 +27,7 @@ module.exports = withCSS({
           },
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors " + shop,
+            value: "frame-ancestors " + window.shop,
           },
         ],
       },
