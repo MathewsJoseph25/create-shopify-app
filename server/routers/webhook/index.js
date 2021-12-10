@@ -4,7 +4,7 @@ const handleAppUninstall = require("./handlers/appUninstall");
 const handleShopUpdate = require("./handlers/shopUpdate");
 const handleShopDelete = require("./handlers/shopredact");
 const handleCustomersDataRequest = require("./handlers/customerdatarequest");
-const handleCustomersRedact = require("./handlers/customersRedact");
+const handleCustomersRedact = require("./handlers/customerredact");
 
 webhooks.post("/", (req, res) => {
   // Verify
