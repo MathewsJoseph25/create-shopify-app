@@ -58,10 +58,12 @@ function MyApp({ Component, pageProps, router }) {
         <Head>
           <title>Shopify App</title>
           <meta charSet="utf-8" />
-          <meta
-            http-equiv="Content-Security-Policy"
-            content="frame-ancestors 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com;"
-          />
+          <script>
+            Content-Security-Policy :frame-ancestors 'self'
+            'https://*.myshopify.com'
+            'https://cambridgetestshop.myshopify.com'
+            'https://admin.shopify.com';
+          </script>
         </Head>
         <Provider config={config}>
           <AppProvider i18n={translations}>
