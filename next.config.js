@@ -19,11 +19,7 @@ module.exports = withCSS({
         headers: [
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors https://cambridgetestshop.myshopify.com",
-          },
-          {
-            key: "Content-Security-Policy",
-            value: "frame-ancestors https://admin.myshopify.com",
+            value: "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.myshopify.com",
           },
         ],
       },
