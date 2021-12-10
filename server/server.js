@@ -61,7 +61,7 @@ server.use("/api", express.json(), apiRoutes);
 //Content Security Policy
 server.use(function (req, res, next) {
   res.setHeader(
-    "Content-Security-Policy-Report-Only",
+    "Content-Security-Policy",
     "frame-ancestors https://*.myshopify.com https://admin.shopify.com https://" +
       req.query.shop
   );
