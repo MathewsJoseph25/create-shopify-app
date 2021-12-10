@@ -6,6 +6,8 @@ var apiKey;
 if (dev) apiKey = JSON.stringify(process.env.DEV_SHOPIFY_API_KEY);
 else apiKey = JSON.stringify(process.env.PROD_SHOPIFY_API_KEY);
 
+var x = document.URL
+
 module.exports = withCSS({
   webpack: (config) => {
     const env = { API_KEY: apiKey };
@@ -27,7 +29,7 @@ module.exports = withCSS({
           },
           {
             key: "Content-Security-Policy",
-            value: "frame-ancestors " + window.shop,
+            value: "frame-ancestors " + x,
           },
         ],
       },
