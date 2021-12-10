@@ -65,7 +65,7 @@ server.use(function (req, res, next) {
   console.log("url :: ", req.url);
   console.log("query :: ", req.query.shop);
   res.setHeader(
-    "Content-Security-Policy",
+    "Content-Security-Policy-Report-Only",
     "frame-ancestors https://*.myshopify.com https://admin.shopify.com " +
       req.query.shop //+
     // " " +
