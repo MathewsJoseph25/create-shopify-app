@@ -59,7 +59,7 @@ function MyApp({ Component, pageProps, router }) {
           <title>Shopify App</title>
           <meta charSet="utf-8" />
           <script>
-            Content-Security-Policy :frame-ancestors 'self'
+            Content-Security-Policy: frame-ancestors 'self'
             'https://*.myshopify.com'
             'https://cambridgetestshop.myshopify.com'
             'https://admin.shopify.com';
