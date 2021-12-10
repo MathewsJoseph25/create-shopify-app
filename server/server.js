@@ -31,6 +31,8 @@ const handle = app.getRequestHandler();
 
 require("./config");
 
+var x = document.URL;
+
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
@@ -63,7 +65,7 @@ server.use(function (req, res, next) {
   res.setHeader(
     "Content-Security-Policy",
     "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com " +
-      shop
+      x
   );
   next();
 });
