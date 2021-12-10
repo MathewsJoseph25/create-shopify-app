@@ -60,13 +60,10 @@ server.use("/api", express.json(), apiRoutes);
 
 //Content Security Policy
 server.use(function (req, res, next) {
-  // console.log("Params :: ", req.params.shop);
-  // console.log("body :: ", req.body.shop);
-  // console.log("url :: ", req.url);
-  console.log("query :: ", req.query.shop);
+  console.log("query :: ", "frame-ancestors https://*.myshopify.com https://admin.shopify.com https://" + req.query.shop);
   res.setHeader(
     "Content-Security-Policy-Report-Only",
-    "frame-ancestors https://*.myshopify.com https://admin.shopify.com " +
+    "frame-ancestors https://*.myshopify.com https://admin.shopify.com https://" +
       req.query.shop //+
     // " " +
     // req.body.shop +
