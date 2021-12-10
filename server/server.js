@@ -31,8 +31,6 @@ const handle = app.getRequestHandler();
 
 require("./config");
 
-var x = document.URL;
-
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
 // Make Mongoose use `findOneAndUpdate()`. Note that this option is `true`
@@ -48,6 +46,8 @@ mongoose.connect(MONGODB_URI, {
 const authRoutes = require("./routers/auth");
 const apiRoutes = require("./routers/api");
 const webhookRoutes = require("./routers/webhook");
+const shop = req.header("X-Shopify-Shop-Domain");
+console.log(shop);
 
 //Serve static assets without auth
 server.get("/_next/*", (req, res) => {
@@ -64,8 +64,7 @@ server.use("/api", express.json(), apiRoutes);
 server.use(function (req, res, next) {
   res.setHeader(
     "Content-Security-Policy",
-    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com " +
-      x
+    "frame-ancestors https://*.myshopify.com https://admin.shopify.com" 
   );
   next();
 });
