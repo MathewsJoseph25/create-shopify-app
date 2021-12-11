@@ -249,24 +249,24 @@ const Index = () => {
       </Card>
       <Card>
         <Layout.Section id="features">
-          <Button
-            fullWidth={true}
-            onClick={handleToggle}
-            ariaExpanded={open}
-            ariaControls="basic-collapsible"
-          >
-            Features
-          </Button>
-          <Collapsible
-            open={open}
-            id="basic-collapsible"
-            transition={{
-              duration: "500ms",
-              timingFunction: "ease-in-out",
-            }}
-            expandOnPrint
-          >
-            <Card.Section>
+          <Card.Section>
+            <Button
+              fullWidth={true}
+              onClick={handleToggle}
+              ariaExpanded={open}
+              ariaControls="basic-collapsible"
+            >
+              Features
+            </Button>
+            <Collapsible
+              open={open}
+              id="basic-collapsible"
+              transition={{
+                duration: "500ms",
+                timingFunction: "ease-in-out",
+              }}
+              expandOnPrint
+            >
               <List type="bullet">
                 <List.Item>Scope of Duplication : 0</List.Item>
                 <List.Item>need to Import / Export Data : 0</List.Item>
@@ -312,8 +312,8 @@ const Index = () => {
                   </List>
                 </List.Item>
               </List>
-            </Card.Section>
-          </Collapsible>
+            </Collapsible>
+          </Card.Section>
         </Layout.Section>
         {serial ? null : (
           <Layout.Section id="registration form" title="Registration Form">
