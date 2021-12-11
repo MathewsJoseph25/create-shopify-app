@@ -11,11 +11,15 @@ webhooks.post("/", (req, res) => {
   const hmac = req.header("X-Shopify-Hmac-Sha256");
   const topic = req.header("X-Shopify-Topic");
   const shop = req.header("X-Shopify-Shop-Domain");
+  const apiver = req.header("X-Shopify-API-Version");
+  const whid = req.header("X-Shopify-Webhook-Id");
 
   const verified = verifyWebhook(req.body, hmac);
-  
+
   console.log("Webhook Verification :: ", verified);
   console.log("Webhook Topic :: ", topic);
+  console.log("Webhook ID :: ", apiver);
+  console.log("Webhook APIVersion :: ", whid);
 
   if (!verified) {
     res.status(401).send("Could not verify request.");
