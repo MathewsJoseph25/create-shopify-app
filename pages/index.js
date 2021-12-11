@@ -251,6 +251,7 @@ const Index = () => {
         <Layout.Section id="features">
           <Card.Section>
             <Button
+              outline
               fullWidth={true}
               onClick={handleToggle}
               ariaExpanded={open}
