@@ -202,7 +202,7 @@ const Index = () => {
                   <Layout sectioned>
                     <Button
                       onClick={handleToggle}
-                      ariaExpanded={open}
+                      ariaExpanded={open || !serial}
                       ariaControls="basic-collapsible"
                     >
                       Show Processed Data
