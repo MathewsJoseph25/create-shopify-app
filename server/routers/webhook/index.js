@@ -13,6 +13,9 @@ webhooks.post("/", (req, res) => {
   const shop = req.header("X-Shopify-Shop-Domain");
 
   const verified = verifyWebhook(req.body, hmac);
+  
+  console.log("Webhook Verification :: ", verified);
+  console.log("Webhook Topic :: ", topic);
 
   if (!verified) {
     res.status(401).send("Could not verify request.");
