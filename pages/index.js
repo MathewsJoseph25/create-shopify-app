@@ -247,13 +247,13 @@ const Index = () => {
           </Layout>
         </Card.Section>
       </Card>
-      <Card title="Features">
+      <Card>
         <Button
           onClick={handleToggle}
           ariaExpanded={open}
           ariaControls="basic-collapsible"
         >
-          Show Features
+          Features
         </Button>
         <Collapsible
           open={open}
@@ -312,64 +312,66 @@ const Index = () => {
                 </List.Item>
               </List>
             </Card.Section>
-            {serial ? null : (
+          </Layout.Section>
+        </Collapsible>
+        {serial ? null : (
+          <Layout.Section id="registration form" title="Registration Form">
+            <Card.Section>
+              <TextContainer>
+                <a>
+                  This app requires additional setup and a TCP file compiled on
+                  your Tally Serial Number, Please fill up the form Below.
+                </a>
+              </TextContainer>
+              <Form
+                onSubmit={handleSubmitSerial}
+                // preventDefault={true}
+                title="Registration"
+                // method="POST"
+              >
+                <FormLayout>
+                  <Card>
+                    <Card.Section>
+                      <TextField
+                        value={serialNum}
+                        onChange={handleSerialChange}
+                        label="Tally Serial Number"
+                        type="number"
+                        maxlength={9}
+                        minlength={9}
+                        min="700000000"
+                        max="800000000"
+                      />
+                    </Card.Section>
+                  </Card>
+                  <Card>
+                    <Card.Section>
+                      <Button primary={true} fullWidth={true} submit>
+                        Submit
+                      </Button>
+                    </Card.Section>
+                  </Card>
+                </FormLayout>
+              </Form>
               <Card.Section>
                 <TextContainer>
                   <a>
-                    This app requires additional setup and a TCP file compiled
-                    on your Tally Serial Number, Please fill up the form Below.
+                    Click on the button below and open the console to view the
+                    data returned from server using authenticated api call.{" "}
                   </a>
+                  <Link href={`/api2?shop=${window.shop}`}>
+                    <a>Another API Demo Page</a>
+                  </Link>
+                  <br />
+                  <Link href={`/introduction?shop=${window.shop}`}>
+                    <a>Introduction</a>
+                  </Link>
+                  <br />
                 </TextContainer>
-                <Form
-                  onSubmit={handleSubmitSerial}
-                  // preventDefault={true}
-                  title="Registration"
-                  // method="POST"
-                >
-                  <FormLayout>
-                    <Card>
-                      <Card.Section>
-                        <TextField
-                          value={serialNum}
-                          onChange={handleSerialChange}
-                          label="Tally Serial Number"
-                          type="number"
-                          maxlength={9}
-                          minlength={9}
-                          min="700000000"
-                          max="800000000"
-                        />
-                      </Card.Section>
-                    </Card>
-                    <Card>
-                      <Card.Section>
-                        <Button primary={true} fullWidth={true} submit>
-                          Submit
-                        </Button>
-                      </Card.Section>
-                    </Card>
-                  </FormLayout>
-                </Form>
-                <Card.Section>
-                  <TextContainer>
-                    <a>
-                      Click on the button below and open the console to view the
-                      data returned from server using authenticated api call.{" "}
-                    </a>
-                    <Link href={`/api2?shop=${window.shop}`}>
-                      <a>Another API Demo Page</a>
-                    </Link>
-                    <br />
-                    <Link href={`/introduction?shop=${window.shop}`}>
-                      <a>Introduction</a>
-                    </Link>
-                    <br />
-                  </TextContainer>
-                </Card.Section>
               </Card.Section>
-            )}
+            </Card.Section>
           </Layout.Section>
-        </Collapsible>
+        )}
       </Card>
       <Card>
         <Card.Section title="Developer">
