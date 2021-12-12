@@ -12,6 +12,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
   for (var i = 0; i < webhooks.length; i++) {
     //setting the data value to check at later stage if webhook was created successfully or not.
     const webhookHandle = webhooks[i].replace("/", "_");
+    console.log(webhookHandle);
     webhookData[webhookHandle] = null;
     //Creating topic payload
     var topic = {
@@ -19,9 +20,9 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
         topic: webhooks[i],
         address: SHOPIFY_WEBHOOK_URI,
         format: "json",
-      }
+      },
     };
-    // console.log(topic);
+    console.log(topic);
     try {
       //creating the webhook
       let webhook = await axios({
@@ -31,6 +32,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
         data: topic,
       });
       webhookData[webhookHandle] = webhook.data.webhook;
+      console.log(webhookData[webhookHandle]);
     } catch (error) {
       console.log("Error while Creating Webhook: " + webhooks[i], error);
     }
@@ -50,10 +52,7 @@ const addWebhooks = async (shop, accessToken, webhooks) => {
     hook.markModified("webhooks");
     try {
       let registrationRes = await registration(
-        shop
-          .replace("https://", "")
-          .replace("http://", "")
-          .split(".")[0]
+        shop.replace("https://", "").replace("http://", "").split(".")[0]
       );
       // console.log("registration :: ", registrationRes);
     } catch (e) {

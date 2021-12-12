@@ -9,6 +9,7 @@ import {
   Page,
   Card,
   Heading,
+  Subheading,
   List,
   TextContainer,
   DataTable,
@@ -169,35 +170,35 @@ const Index = () => {
                   </Heading>
                   {product ? (
                     <>
-                      <Heading element="h3">Products Uploaded : </Heading>
+                      <Subheading element="h3">Products Uploaded : </Subheading>
                       <p>{product}</p>
                       <br />
                     </>
                   ) : null}
                   {image ? (
                     <>
-                      <Heading element="h3">Images Uploaded : </Heading>
+                      <Subheading element="h3">Images Uploaded : </Subheading>
                       <p>{image}</p>
                       <br />
                     </>
                   ) : null}
                   {orderRec ? (
                     <>
-                      <Heading element="h3">Orders Received : </Heading>
+                      <Subheading element="h3">Orders Received : </Subheading>
                       <p>{orderRec}</p>
                       <br />
                     </>
                   ) : null}
                   {orderDel ? (
                     <>
-                      <Heading element="h3">Orders Delivered : </Heading>
+                      <Subheading element="h3">Orders Delivered : </Subheading>
                       <p>{orderDel}</p>
                       <br />
                     </>
                   ) : null}
                   {orderRec ? (
                     <>
-                      <Heading element="h3">Orders Returned : </Heading>
+                      <Subheading element="h3">Orders Returned : </Subheading>
                       <p>{orderRet}</p>
                       <br />
                     </>
