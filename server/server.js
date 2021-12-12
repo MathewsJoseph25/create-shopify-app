@@ -72,7 +72,7 @@ server.use(function (req, res, next) {
       shopurl;
   }
   console.log(frameAncestors);
-  res.setHeader("Content-Security-Policy", frameAncestors);
+  res.setHeader("content-security-policy", frameAncestors);
   next();
 });
 //Webhook Url
