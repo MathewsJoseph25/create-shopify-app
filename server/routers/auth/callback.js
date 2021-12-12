@@ -112,7 +112,7 @@ const callback = async (req, res) => {
       "shop/update",
       "shop/redact",
       "shop/redact",
-      "customers/data_request",
+      // "customers/data_request",
     ]
   );
 
