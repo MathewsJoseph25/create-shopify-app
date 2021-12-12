@@ -104,16 +104,16 @@ const callback = async (req, res) => {
     return;
   }
   //Step 5: create webhooks
-  addWebhooks(
-    req.query.shop.replace("https://", "").replace("http://", ""),
-    accessToken.data.access_token,
-    [
-      "app/uninstalled",
-      "shop/update",
-    ]
-  );
-
-  console.log("Webhooks added :: " + JSON.stringify(addWebhooks));
+  try {
+    addWebhooks(
+      req.query.shop.replace("https://", "").replace("http://", ""),
+      accessToken.data.access_token,
+      ["app/uninstalled", "shop/update"]
+    );
+    console.log("Webhooks added :: " + JSON.stringify(addWebhooks));
+  } catch (e) {
+    console.log("Errors while adding webhooks :: " + e);
+  }
 
   //Step 6: Redirect to the index page with shop params
   const url =
