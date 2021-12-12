@@ -159,8 +159,10 @@ const Index = () => {
             {serial ? (
               <>
                 <Layout.Section>
-                  <Heading element="h1">Serial Number : </Heading>
-                  <TextField value={serial} readOnly={serial} />
+                  <Stack>
+                    <Stack.Item fill>Serial Number : </Stack.Item>
+                    <TextField value={serial} readOnly={serial} />
+                  </Stack>
                 </Layout.Section>
               </>
             ) : null}
