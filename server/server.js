@@ -66,10 +66,7 @@ server.use(function (req, res, next) {
     shopurl = " https://" + req.query.shop;
   }
   console.log("URL :: ", shopurl);
-  if (shopurl === null) {
-    var frameAncestors =
-      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com";
-  } else {
+  if (shopurl !== "") {
     var frameAncestors =
       "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.shopify.com https://*.myshopify.com 'self'" +
       shopurl;
