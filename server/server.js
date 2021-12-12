@@ -65,7 +65,7 @@ server.use(function (req, res, next) {
     "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://" +
     req.query.shop;
   console.log(frameAncestors);
-  res.setHeader("Content-Security-Policy-Report-Only", frameAncestors);
+  res.setHeader("Content-Security-Policy", frameAncestors);
   next();
 });
 //Webhook Url
