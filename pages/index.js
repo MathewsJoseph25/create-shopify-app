@@ -165,13 +165,7 @@ const Index = () => {
                       <Heading element="h1">Serial Number : </Heading>
                     </Stack.Item>
                     <Stack.Item fill>
-                      <Badge
-                        status="success"
-                        progress="complete"
-                        statusAndProgressLabelOverride="Status: Serial Number Registered Successfully."
-                      >
-                        {serial}
-                      </Badge>
+                      <Badge status="info">{serial}</Badge>
                     </Stack.Item>
                   </Stack>
                 </Layout.Section>
