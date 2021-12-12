@@ -107,8 +107,16 @@ const callback = async (req, res) => {
   addWebhooks(
     req.query.shop.replace("https://", "").replace("http://", ""),
     accessToken.data.access_token,
-    ["app/uninstalled", "shop/update"]
+    [
+      "app/uninstalled",
+      "shop/update",
+      "shop/redact",
+      "shop/redact",
+      "customers/data_request",
+    ]
   );
+
+  console.log(addWebhooks);
 
   //Step 6: Redirect to the index page with shop params
   const url =
