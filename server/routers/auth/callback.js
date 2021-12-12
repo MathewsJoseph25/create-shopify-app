@@ -110,9 +110,6 @@ const callback = async (req, res) => {
     [
       "app/uninstalled",
       "shop/update",
-      "shop/redact",
-      "customers/redact",
-      "customers/data_request",
     ]
   );
 
