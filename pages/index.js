@@ -164,7 +164,7 @@ const Index = () => {
                     <Stack.Item fill>
                       <Heading element="h1">Serial Number : </Heading>
                     </Stack.Item>
-                    <Stack.Item fill>
+                    <Stack.Item>
                       <Badge status="info">{serial}</Badge>
                     </Stack.Item>
                   </Stack>
