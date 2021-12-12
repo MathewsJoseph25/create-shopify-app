@@ -71,7 +71,7 @@ server.use(function (req, res, next) {
       "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com";
   } else {
     var frameAncestors =
-      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com" +
+      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.shopify.com https://*.myshopify.com 'self'" +
       shopurl;
   }
   console.log(frameAncestors);
