@@ -161,7 +161,7 @@ const Index = () => {
                 <Layout.Section>
                   <Stack>
                     <Stack.Item fill>Serial Number : </Stack.Item>
-                    <TextField value={serial} readOnly />
+                    <TextField value={serial} readOnly={true} />
                   </Stack>
                 </Layout.Section>
               </>
