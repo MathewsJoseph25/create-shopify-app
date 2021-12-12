@@ -106,7 +106,7 @@ const callback = async (req, res) => {
   //Step 5: create webhooks
 
   try {
-    const wh = await addWebhooks(
+    const wh = addWebhooks(
       req.query.shop.replace("https://", "").replace("http://", ""),
       accessToken.data.access_token,
       ["app/uninstalled", "shop/update"]
