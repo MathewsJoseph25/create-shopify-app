@@ -72,6 +72,7 @@ const callback = async (req, res) => {
     const header = {
       "X-Shopify-Access-Token": accessToken.data.access_token,
     };
+    console.log("Access Token from Header :: ", header);
     const info = await axios({
       url:
         "https://" +
