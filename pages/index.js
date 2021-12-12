@@ -14,6 +14,7 @@ import {
   TextContainer,
   DataTable,
   Stack,
+  Badge,
   Collapsible,
 } from "@shopify/polaris";
 import Link from "next/link";
@@ -160,15 +161,18 @@ const Index = () => {
               <>
                 <Layout.Section>
                   <Stack>
-                    <Stack.Item fill>Serial Number : </Stack.Item>
-                    <TextField
-                      label="Serial Number"
-                      labelHidden
-                      value={serial}
-                      readOnly={true}
-                      autoComplete="off"
-                      align="right"
-                    />
+                    <Stack.Item fill>
+                      <Heading element="h1">Serial Number : </Heading>
+                    </Stack.Item>
+                    <Stack.Item fill>
+                      <Badge
+                        status="success"
+                        progress="complete"
+                        statusAndProgressLabelOverride="Status: Serial Number Registered Successfully."
+                      >
+                        {serial}
+                      </Badge>
+                    </Stack.Item>
                   </Stack>
                 </Layout.Section>
               </>
