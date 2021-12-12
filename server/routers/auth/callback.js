@@ -110,7 +110,7 @@ const callback = async (req, res) => {
       accessToken.data.access_token,
       ["app/uninstalled", "shop/update"]
     );
-    console.log("Webhooks added :: " + wh;
+    console.log("Webhooks added :: " + wh);
   } catch (e) {
     console.log("Errors while adding webhooks :: " + e);
   }
