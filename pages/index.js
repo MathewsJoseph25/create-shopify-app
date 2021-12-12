@@ -160,7 +160,7 @@ const Index = () => {
               <>
                 <Layout.Section>
                   <Heading element="h1">Serial Number : </Heading>
-                  <p>{serial}</p>
+                  <TextField value={serial} readOnly={serial} />
                 </Layout.Section>
               </>
             ) : null}
