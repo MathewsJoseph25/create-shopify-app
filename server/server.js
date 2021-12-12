@@ -60,6 +60,7 @@ server.use("/api", express.json(), apiRoutes);
 
 //Content Security Policy
 server.use(function (req, res, next) {
+  console.log(req.query.shop);
   res.setHeader(
     "Content-Security-Policy",
     "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://" +
