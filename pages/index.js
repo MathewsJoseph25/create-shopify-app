@@ -35,7 +35,9 @@ const Index = () => {
   const [product, setProduct] = useState(0);
   const [image, setImage] = useState(0);
   const [open, setOpen] = useState(false);
-  const [featureOpen, setFeatureOpen] = useState(false);
+  const [featureOpen, setFeatureOpen] = useState(
+    serialNum === null ? true : false
+  );
 
   const getData = async () => {
     try {

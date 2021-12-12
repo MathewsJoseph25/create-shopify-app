@@ -61,14 +61,19 @@ server.use("/api", express.json(), apiRoutes);
 //Content Security Policy
 server.use(function (req, res, next) {
   console.log(req.query.shop);
-  if (req.query.shop !== undefined) {
-    var shopurl = " https://" + req.query.shop;
-  } else {
-    var shopurl = null;
+  var shopurl;
+  if (req.query.shop !== "") {
+    shopurl = " https://" + req.query.shop;
   }
-  let frameAncestors =
-    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com" +
-    shopurl;
+  console.log("URL :: ", shopurl);
+  if (shopurl === null) {
+    var frameAncestors =
+      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com";
+  } else {
+    var frameAncestors =
+      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com" +
+      shopurl;
+  }
   console.log(frameAncestors);
   res.setHeader("Content-Security-Policy", frameAncestors);
   next();
