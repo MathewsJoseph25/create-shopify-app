@@ -62,7 +62,7 @@ server.use("/api", express.json(), apiRoutes);
 server.use(function (req, res, next) {
   console.log(req.query.shop);
   res.setHeader(
-    "Content-Security-Policy",
+    "Content-Security-Policy-Report-Only",
     "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://" +
       req.query.shop
   );
