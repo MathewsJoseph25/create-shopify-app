@@ -116,7 +116,7 @@ const callback = async (req, res) => {
     ]
   );
 
-  console.log(addWebhooks);
+  console.log("Webhooks added :: " + JSON.stringify(addWebhooks));
 
   //Step 6: Redirect to the index page with shop params
   const url =
