@@ -34,6 +34,7 @@ const Index = () => {
   const [product, setProduct] = useState(0);
   const [image, setImage] = useState(0);
   const [open, setOpen] = useState(false);
+  const [featureOpen, setFeatureOpen] = useState(false);
 
   const getData = async () => {
     try {
@@ -96,6 +97,9 @@ const Index = () => {
 
   const handleSerialChange = useCallback((value) => setSerialNum(value), []);
   const handleToggle = useCallback(() => setOpen((open) => !open), []);
+  const handleFeatToggle = useCallback(() =>
+    setFeatureOpen((featureOpen) => !featureOpen, [])
+  );
 
   const validate = () => {
     let err = {};
@@ -253,14 +257,14 @@ const Index = () => {
             <Button
               outline
               fullWidth={true}
-              onClick={handleToggle}
-              ariaExpanded={open}
+              onClick={handleFeatToggle}
+              ariaExpanded={featureOpen}
               ariaControls="basic-collapsible"
             >
               Features
             </Button>
             <Collapsible
-              open={open}
+              open={featureOpen}
               id="basic-collapsible"
               transition={{
                 duration: "500ms",
