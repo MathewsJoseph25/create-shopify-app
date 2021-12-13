@@ -46,6 +46,7 @@ webhooks.post("/", (req, res) => {
       handleShopDelete(payload, shop);
       break;
   }
+  console.log("Webhook :: ", topic, " Processed Successfully");
 });
 
 module.exports = webhooks;

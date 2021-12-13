@@ -60,19 +60,19 @@ server.use("/api", express.json(), apiRoutes);
 
 //Content Security Policy
 server.use(function (req, res, next) {
-  console.log(req.query.shop);
+  // console.log(req.query.shop);
   var shopurl;
   if (req.query.shop !== "") {
     shopurl = " https://" + req.query.shop;
   }
-  console.log("URL :: ", shopurl);
+  // console.log("URL :: ", shopurl);
   if (shopurl !== "") {
     var frameAncestors =
-      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.shopify.com https://*.myshopify.com 'self'" +
-      shopurl;
+      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com" // https://*.shopify.com https://*.myshopify.com 'self'" +
+      // shopurl;
   }
-  console.log(frameAncestors);
-  res.setHeader("content-security-policy", frameAncestors);
+  // console.log(frameAncestors);
+  res.setHeader("content-security-policy-report-only", frameAncestors);
   next();
 });
 //Webhook Url
