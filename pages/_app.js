@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps, router }) {
           <meta http-equiv="refresh" content="180" />
           <meta
             http-equiv="Content-Security-Policy"
-            content="frame-ancestors 'self'
+            content="'self'
             https://*.myshopify.com https://cambridgetestshop.myshopify.com
             https://admin.myshopify.com"
           />
