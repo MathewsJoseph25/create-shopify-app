@@ -65,14 +65,10 @@ server.use(function (req, res, next) {
   if (req.query.shop !== "") {
     shopurl = " https://" + req.query.shop;
   }
-  // console.log("URL :: ", shopurl);
-  if (shopurl !== "") {
-    var frameAncestors =
-      "script-src 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com"; // https://*.shopify.com https://*.myshopify.com 'self'" +
-    // shopurl;
-  }
-  // console.log(frameAncestors);
-  res.setHeader("Content-Security-Policy", frameAncestors);
+  res.setHeader(
+    "Content-Security-Policy",
+    "script-src 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com"
+  );
   next();
 });
 //Webhook Url
