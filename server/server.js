@@ -58,19 +58,19 @@ server.use("/auth", authRoutes);
 //Api Url
 server.use("/api", express.json(), apiRoutes);
 
-//Content Security Policy
-server.use(function (req, res, next) {
-  // console.log(req.query.shop);
-  var shopurl;
-  if (req.query.shop !== "") {
-    shopurl = " https://" + req.query.shop;
-  }
-  res.setHeader(
-    "Content-Security-Policy",
-    "script-src 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com"
-  );
-  next();
-});
+// //Content Security Policy
+// server.use(function (req, res, next) {
+//   // console.log(req.query.shop);
+//   var shopurl;
+//   if (req.query.shop !== "") {
+//     shopurl = " https://" + req.query.shop;
+//   }
+//   res.setHeader(
+//     "Content-Security-Policy",
+//     "script-src 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com"
+//   );
+//   next();
+// });
 //Webhook Url
 server.use(
   "/webhooks",
