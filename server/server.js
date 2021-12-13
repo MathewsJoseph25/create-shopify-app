@@ -68,11 +68,11 @@ server.use(function (req, res, next) {
   // console.log("URL :: ", shopurl);
   if (shopurl !== "") {
     var frameAncestors =
-      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com" // https://*.shopify.com https://*.myshopify.com 'self'" +
-      // shopurl;
+      "script-src 'self' https://cambridgetestshop.myshopify.com https://admin.shopify.com"; // https://*.shopify.com https://*.myshopify.com 'self'" +
+    // shopurl;
   }
   // console.log(frameAncestors);
-  res.setHeader("content-security-policy-report-only", frameAncestors);
+  res.setHeader("Content-Security-Policy", frameAncestors);
   next();
 });
 //Webhook Url
