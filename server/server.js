@@ -67,7 +67,7 @@ server.use(function (req, res, next) {
   }
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self' 'unsafe-inline' cambridgetestshop.myshopify.com admin.shopify.com"
+    "default-src 'self' 'unsafe-inline' example.myshopify.com admin.shopify.com"
   );
   next();
 });
