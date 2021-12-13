@@ -30,7 +30,7 @@ const appUninstall = async (payload, shop) => {
       return;
     }
   } catch (error) {
-      console.log(error);
+    console.log(error);
     //If the shop isn't installed, Shopify returns 401 and Axios will throw an unauthenticated request error
     //So, we can now remove the data from the database
   }
@@ -42,6 +42,7 @@ const appUninstall = async (payload, shop) => {
       },
       {
         uninstalledOn: Date.now(),
+        serial: null,
         isInstalled: false,
         accessToken: null,
         webhooks: {},

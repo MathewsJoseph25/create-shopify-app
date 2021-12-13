@@ -10,6 +10,4 @@ const verifyWebhook = (payload, hmac) => {
   return genHash === hmac;
 };
 
-console.log("Webhook Verification :: ", verifyWebhook);
-
 module.exports = verifyWebhook;

@@ -6,6 +6,31 @@ const handleShopDelete = require("./handlers/shopredact");
 const handleCustomersDataRequest = require("./handlers/customerdatarequest");
 const handleCustomersRedact = require("./handlers/customerredact");
 
+webhooks.get("/", (req, res) => {
+  const hmac = req.header("X-Shopify-Hmac-Sha256");
+  const topic = req.header("X-Shopify-Topic");
+  const shop = req.header("X-Shopify-Shop-Domain");
+  const apiver = req.header("X-Shopify-API-Version");
+  const whid = req.header("X-Shopify-Webhook-Id");
+
+  const verified = verifyWebhook(req.body, hmac);
+
+  console.log("Webhook Verification :: ", verified);
+  console.log("Webhook Topic :: ", topic);
+  console.log("Webhook ID :: ", apiver);
+  console.log("Webhook APIVersion :: ", whid);
+
+  if (!verified) {
+    res.status(401).send("Could not verify request.");
+    return;
+  }
+
+  const data = req.body.toString();
+  const payload = JSON.parse(data);
+  res.status(200).send("OK");
+
+  console.log("Already Existing Webhooks :: ", payload);
+});
 webhooks.post("/", (req, res) => {
   // Verify
   const hmac = req.header("X-Shopify-Hmac-Sha256");

@@ -274,7 +274,7 @@ const Index = () => {
               Features
             </Button>
             <Collapsible
-              open={featureOpen}
+              open={featureOpen || !serial}
               id="basic-collapsible"
               transition={{
                 duration: "500ms",
