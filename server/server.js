@@ -52,12 +52,6 @@ server.get("/_next/*", (req, res) => {
   return handle(req, res);
 });
 
-//Authentication Url
-server.use("/auth", authRoutes);
-
-//Api Url
-server.use("/api", express.json(), apiRoutes);
-
 //Content Security Policy
 server.use(function (req, res, next) {
   // console.log(req.query.shop);
@@ -67,10 +61,16 @@ server.use(function (req, res, next) {
   }
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self' 'unsafe-inline' example.myshopify.com admin.shopify.com"
+    "frame-ancestors https://example.myshopify.com https://admin.shopify.com"
   );
   next();
 });
+//Authentication Url
+server.use("/auth", authRoutes);
+
+//Api Url
+server.use("/api", express.json(), apiRoutes);
+
 //Webhook Url
 server.use(
   "/webhooks",
