@@ -6,7 +6,7 @@ const shopRedact = async (payload, shop) => {
       {
         shop: shop.replace("https://", "").replace("http://", "").split(".")[0],
       },
-      async (err, shop) => {
+      (err, shop) => {
         if ((err === null && shop === null) || shop === null) {
           return;
         } else {
