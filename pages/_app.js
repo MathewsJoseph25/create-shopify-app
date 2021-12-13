@@ -62,8 +62,8 @@ function MyApp({ Component, pageProps, router }) {
           <meta
             http-equiv="Content-Security-Policy"
             content="default-src 'self';
-            https://*.myshopify.com; https://cambridgetestshop.myshopify.com;
-            https://admin.myshopify.com;"
+            *.myshopify.com; cambridgetestshop.myshopify.com;
+            admin.myshopify.com;"
           />
         </Head>
         <Provider config={config}>
