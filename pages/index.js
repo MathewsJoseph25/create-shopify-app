@@ -161,7 +161,7 @@ const Index = () => {
             </Layout.Section>
             {serial ? (
               <>
-                {/* <Layout.Section> */}
+                <Layout.Section>
                   <Stack>
                     <Stack.Item fill>
                       <Heading element="h1">Serial Number : </Heading>
@@ -170,8 +170,8 @@ const Index = () => {
                       <Badge status="info">{serial}</Badge>
                     </Stack.Item>
                   </Stack>
-                {/* </Layout.Section> */}
-                {/* <Layout.Section> */}
+                </Layout.Section>
+                <Layout.Section>
                   <Stack>
                     <Stack.Item fill>
                       <Heading element="h1">Access Token : </Heading>
@@ -180,7 +180,7 @@ const Index = () => {
                       <Badge status="info">{userAccessToken}</Badge>
                     </Stack.Item>
                   </Stack>
-                {/* </Layout.Section> */}
+                </Layout.Section>
               </>
             ) : null}
             {product || image || orderRec || orderDel || orderRet ? (
