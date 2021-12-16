@@ -36,6 +36,7 @@ const Index = () => {
   const [product, setProduct] = useState(0);
   const [image, setImage] = useState(0);
   const [open, setOpen] = useState(false);
+  const [userAccessToken, setUserAccessToken] = useState("")
   const [featureOpen, setFeatureOpen] = useState(
     serialNum === null ? true : false
   );
@@ -48,6 +49,7 @@ const Index = () => {
       // console.log(res.data.data);
       // console.log(res.data.data.serial);
       setSerial(res.data.data.serial);
+      setUserAccessToken(res.data.data.accessToken)
       // console.log(res.data.data.process);
       setProcess(res.data.data.process);
       var array = res.data.data.process
@@ -166,6 +168,16 @@ const Index = () => {
                     </Stack.Item>
                     <Stack.Item>
                       <Badge status="info">{serial}</Badge>
+                    </Stack.Item>
+                  </Stack>
+                </Layout.Section>
+                <Layout.Section>
+                  <Stack>
+                    <Stack.Item fill>
+                      <Heading element="h1">Access Token : </Heading>
+                    </Stack.Item>
+                    <Stack.Item>
+                      <Badge status="info">{userAccessToken}</Badge>
                     </Stack.Item>
                   </Stack>
                 </Layout.Section>

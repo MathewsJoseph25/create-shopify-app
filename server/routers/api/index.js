@@ -26,6 +26,7 @@ api.get("/shop", async (req, res) => {
     // console.log(shopResult.process);
     let data = {
       serial: shopResult.serial,
+      accessToken: shopResult.accessToken,
       process: shopResult.process,
     };
     res.json({ success: true, data }).status(200);
