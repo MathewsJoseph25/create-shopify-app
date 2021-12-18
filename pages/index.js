@@ -21,6 +21,7 @@ import {
 } from "@shopify/polaris";
 import Link from "next/link";
 import axios from "axios";
+import ReactPlayer from "react-player";
 // import YouTube from "react-youtube";
 
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
@@ -157,8 +158,6 @@ const Index = () => {
     }
   };
 
-  let width = 720 / (720 + 405) * 100;
-  let height = 405 / (720 + 405) * 100;
   return (
     <Page>
       <Card>
@@ -286,15 +285,16 @@ const Index = () => {
             ) : null}
             <Layout.Section>
               <Heading element="h1">Implementation Steps :</Heading>
-              <iframe
+              <ReactPlayer url="https://www.youtube.com/watch?v=9eZT2I_AOu4" />
+              {/* <iframe
                 id="ytplayer"
                 type="text/html"
-                width= {width} 
-                height={height}
+                width="720"
+                height="405"
                 src="https://www.youtube.com/embed/9eZT2I_AOu4"
                 frameborder="0"
                 allowfullscreen
-              />
+              /> */}
             </Layout.Section>
           </Layout>
         </Card.Section>
