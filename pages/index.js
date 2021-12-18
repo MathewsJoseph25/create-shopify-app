@@ -372,7 +372,7 @@ const Index = () => {
           <Layout.Section id="registration form" title="Registration Form">
             <Card.Section>
               <TextContainer>
-                <Heading element="h5">
+                <Heading element="p">
                   This app requires additional setup and a TCP file compiled on
                   your Tally Serial Number, Please fill up the form Below.
                 </Heading>
@@ -412,7 +412,7 @@ const Index = () => {
                 </FormLayout>
               </Form>
               <Card.Section>
-                <TextContainer>
+                {/* <TextContainer>
                   <a>
                     Click on the button below and open the console to view the
                     data returned from server using authenticated api call.{" "}
@@ -425,7 +425,7 @@ const Index = () => {
                     <a>Introduction</a>
                   </Link>
                   <br />
-                </TextContainer>
+                </TextContainer> */}
               </Card.Section>
             </Card.Section>
           </Layout.Section>
