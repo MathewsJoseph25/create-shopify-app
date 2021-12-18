@@ -15,6 +15,7 @@ import {
   DataTable,
   Stack,
   Badge,
+  VideoThumbnail,
   Collapsible,
   MediaCard,
 } from "@shopify/polaris";
