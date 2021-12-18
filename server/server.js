@@ -60,8 +60,12 @@ server.use(function (req, res, next) {
     shopurl = " https://" + req.query.shop;
   }
   res.setHeader(
-    "Content-Security-Policy",
-    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com https://www.youtube.com/*"
+    [
+      "Content-Security-Policy",
+
+      "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com https://www.youtube.com",
+    ],
+    ["Access-Control-Allow-Origin", "https://www.youtube.com/"]
   );
   next();
 });
