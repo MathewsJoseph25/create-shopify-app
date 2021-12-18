@@ -157,7 +157,8 @@ const Index = () => {
     }
   };
 
-  
+  let width = 720 / (720 + 405) * 100;
+  let height = 405 / (720 + 405) * 100;
   return (
     <Page>
       <Card>
@@ -288,11 +289,8 @@ const Index = () => {
               <iframe
                 id="ytplayer"
                 type="text/html"
-                width="0"
-                height="0"
-                top="0"
-                left="0"
-                border="0"
+                width= {width} 
+                height={height}
                 src="https://www.youtube.com/embed/9eZT2I_AOu4"
                 frameborder="0"
                 allowfullscreen
