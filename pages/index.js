@@ -286,22 +286,35 @@ const Index = () => {
             ) : null}
             <Layout.Section>
               <Heading element="h1">Implementation Steps :</Heading>
-              <ReactPlayer url="https://www.youtube.com/embed/9eZT2I_AOu4?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" width="100%"/>
+              <ReactPlayer
+                url="https://www.youtube.com/embed/9eZT2I_AOu4?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1"
+                width="100%"
+              />
               <br />
               <Heading element="h1">
                 Map Existing Products on Shopify with Tally Prime :
               </Heading>
-              <ReactPlayer url="https://www.youtube.com/embed/3LZ-i-JOmZE?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" width="100%"/>
+              <ReactPlayer
+                url="https://www.youtube.com/embed/3LZ-i-JOmZE?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1"
+                width="100%"
+              />
+              <br />
+              <Heading element="h1">
+                Post Stock Group in Tally Prime as Multi Variant Product on
+                Shopify with Image :
+              </Heading>
+              <ReactPlayer
+                url="https://www.youtube.com/embed/P7q_7k8t3-I?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1"
+                width="100%"
+              />
               <br />
               <Heading element="h1">
                 Processing Orders on Shopify in Tally Prime :
               </Heading>
-              <ReactPlayer url="https://www.youtube.com/embed/P7q_7k8t3-I?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" width="100%"/>
-              <br />
-              <Heading element="h1">
-                Processing Orders on Shopify in Tally Prime :
-              </Heading>
-              <ReactPlayer url="https://www.youtube.com/embed/uZ-DQhNqlzc?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" width="100%"/>
+              <ReactPlayer
+                url="https://www.youtube.com/embed/uZ-DQhNqlzc?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1"
+                width="100%"
+              />
               <br />
               {/* <iframe
                 id="ytplayer"
