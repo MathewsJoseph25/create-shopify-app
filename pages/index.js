@@ -21,6 +21,7 @@ import {
 } from "@shopify/polaris";
 import Link from "next/link";
 import axios from "axios";
+import youtube from "react-youtube";
 
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
@@ -42,6 +43,15 @@ const Index = () => {
   const [featureOpen, setFeatureOpen] = useState(
     serialNum === null ? true : false
   );
+
+  const opts = {
+    height: "390",
+    width: "640",
+    playerVars: {
+      // https://developers.google.com/youtube/player_parameters
+      autoplay: 1,
+    },
+  };
 
   const getData = async () => {
     try {
@@ -185,22 +195,11 @@ const Index = () => {
                 </Layout.Section>
                 <Layout.Section>
                   <Heading element="h1">Implementation Steps :</Heading>
-                  <MediaCard
-                    title="Turn your side-project into a business"
-                    primaryAction={{
-                      content: "Learn more",
-                      onAction: () => {},
-                    }}
-                    description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
-                    popoverActions={[
-                      { content: "Dismiss", onAction: () => {} },
-                    ]}
-                  >
-                    <VideoThumbnail
-                      videoLength={80}
-                      thumbnailUrl="https://www.youtube.com/watch?v=9eZT2I_AOu4&feature=youtu.be"
-                    />
-                  </MediaCard>
+                  <YouTube
+                    videoId="9eZT2I_AOu4"
+                    opts={opts}
+                    onReady={this._onReady}
+                  />
                 </Layout.Section>
               </>
             ) : null}
