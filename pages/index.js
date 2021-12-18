@@ -157,11 +157,6 @@ const Index = () => {
     }
   };
 
-  _onReady(e) {
-    // access to player in all event handlers via event.target
-    e.target.pauseVideo();
-  }
-
   return (
     <Page>
       <Card>
@@ -200,7 +195,15 @@ const Index = () => {
                 </Layout.Section>
                 <Layout.Section>
                   <Heading element="h1">Implementation Steps :</Heading>
-                  <iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/9eZT2I_AOu4" frameborder="0" allowfullscreen/>
+                  <iframe
+                    id="ytplayer"
+                    type="text/html"
+                    width="720"
+                    height="405"
+                    src="https://www.youtube.com/embed/9eZT2I_AOu4"
+                    frameborder="0"
+                    allowfullscreen
+                  />
                 </Layout.Section>
               </>
             ) : null}
@@ -441,8 +444,6 @@ const Index = () => {
       </Card>
     </Page>
   );
-
-  
 };
 
 export default Index;
