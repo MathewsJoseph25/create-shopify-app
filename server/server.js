@@ -61,7 +61,7 @@ server.use(function (req, res, next) {
   }
   res.setHeader(
     "Content-Security-Policy",
-    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com https://www.youtube.com"
+    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com https://www.youtube.com/*"
   );
   next();
 });
