@@ -285,7 +285,7 @@ const Index = () => {
             ) : null}
             <Layout.Section>
               <Heading element="h1">Implementation Steps :</Heading>
-              <ReactPlayer url="https://www.youtube.com/embed/9eZT2I_AOu4?host=https://www.youtube.com" />
+              <ReactPlayer url="https://www.youtube.com/embed/9eZT2I_AOu4?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" />
               {/* <iframe
                 id="ytplayer"
                 type="text/html"
