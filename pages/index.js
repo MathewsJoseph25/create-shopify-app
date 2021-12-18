@@ -168,7 +168,8 @@ const Index = () => {
                 <p>
                   Create Products, Manage Customers, Track Orders, Keep Accutate
                   Records, Easy Statutory Compliances - Use Tally.ERP9 / Tally
-                  Prime to Manage your Accounting & Statutory Compliances
+                  Prime to Manage your Accounting & Statutory Compliances while
+                  also simplifying product uploads to Shopify.
                 </p>
               </Banner>
             </Layout.Section>
@@ -285,14 +286,18 @@ const Index = () => {
             ) : null}
             <Layout.Section>
               <Heading element="h1">Implementation Steps :</Heading>
-              <ReactPlayer url="https://www.youtube.com/embed/9eZT2I_AOu4?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" />
-              <br/>
-              <Heading element="h1">Map Existing Products on Shopify with Tally Prime :</Heading>
+              <ReactPlayer url="https://www.youtube.com/embed/9eZT2I_AOu4?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" width="100%"/>
+              <br />
+              <Heading element="h1">
+                Map Existing Products on Shopify with Tally Prime :
+              </Heading>
               <ReactPlayer url="https://www.youtube.com/embed/3LZ-i-JOmZE?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" />
-              <br/>
-              <Heading element="h1">Processing Orders on Shopify in Tally Prime :</Heading>
+              <br />
+              <Heading element="h1">
+                Processing Orders on Shopify in Tally Prime :
+              </Heading>
               <ReactPlayer url="https://www.youtube.com/embed/uZ-DQhNqlzc?host=https://tallyecomwithjwt.herokuapp.com&enablejsapi=1" />
-              <br/>
+              <br />
               {/* <iframe
                 id="ytplayer"
                 type="text/html"
@@ -384,8 +389,9 @@ const Index = () => {
                   your Tally Serial Number, Please fill up the form Below.
                 </Heading>
                 <a>
-                  (a valid serial number starts with 7, is 9 digits long, & total
-                  of digits is 9 for example 700000002, 700000011 ... 799999992)
+                  (a valid serial number starts with 7, is 9 digits long, &
+                  total of digits is 9 for example 700000002, 700000011 ...
+                  799999992)
                 </a>
               </TextContainer>
               <Form
