@@ -63,7 +63,7 @@ server.use(function (req, res, next) {
     "Content-Security-Policy",
     "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com"
   );
-  res.setHeader("Access-Control-Allow-Origin", "https://www.youtube.com");
+  res.setHeader("Access-Control-Allow-Origin", "https://www.youtube.com/*");
   next();
 });
 //Authentication Url
