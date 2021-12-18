@@ -21,7 +21,7 @@ import {
 } from "@shopify/polaris";
 import Link from "next/link";
 import axios from "axios";
-import youtube from "react-youtube";
+import YouTube from "react-youtube";
 
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
