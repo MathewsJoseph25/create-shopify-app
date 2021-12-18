@@ -21,7 +21,7 @@ import {
 } from "@shopify/polaris";
 import Link from "next/link";
 import axios from "axios";
-import YouTube from "react-youtube";
+// import YouTube from "react-youtube";
 
 // const img = "https://cdn.shopify.com/s/files/1/0757/9955/files/empty-state.svg";
 
@@ -157,6 +157,11 @@ const Index = () => {
     }
   };
 
+  _onReady(e) {
+    // access to player in all event handlers via event.target
+    e.target.pauseVideo();
+  }
+
   return (
     <Page>
       <Card>
@@ -195,11 +200,7 @@ const Index = () => {
                 </Layout.Section>
                 <Layout.Section>
                   <Heading element="h1">Implementation Steps :</Heading>
-                  <YouTube
-                    videoId="9eZT2I_AOu4"
-                    opts={opts}
-                    onReady={this._onReady}
-                  />
+                  <iframe id="ytplayer" type="text/html" width="720" height="405" src="https://www.youtube.com/embed/9eZT2I_AOu4" frameborder="0" allowfullscreen/>
                 </Layout.Section>
               </>
             ) : null}
@@ -440,6 +441,8 @@ const Index = () => {
       </Card>
     </Page>
   );
+
+  
 };
 
 export default Index;
