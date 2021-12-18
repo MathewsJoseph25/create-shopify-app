@@ -288,9 +288,8 @@ const Index = () => {
               <iframe
                 id="ytplayer"
                 type="text/html"
-                width="100%"
-                height="66.67%"
-                // height="100%"
+                width="0"
+                height="0"
                 top="0"
                 left="0"
                 border="0"
