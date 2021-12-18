@@ -16,6 +16,7 @@ import {
   Stack,
   Badge,
   Collapsible,
+  MediaCard,
 } from "@shopify/polaris";
 import Link from "next/link";
 import axios from "axios";
@@ -36,7 +37,7 @@ const Index = () => {
   const [product, setProduct] = useState(0);
   const [image, setImage] = useState(0);
   const [open, setOpen] = useState(false);
-  const [userAccessToken, setUserAccessToken] = useState("")
+  const [userAccessToken, setUserAccessToken] = useState("");
   const [featureOpen, setFeatureOpen] = useState(
     serialNum === null ? true : false
   );
@@ -49,7 +50,7 @@ const Index = () => {
       // console.log(res.data.data);
       // console.log(res.data.data.serial);
       setSerial(res.data.data.serial);
-      setUserAccessToken(res.data.data.accessToken)
+      setUserAccessToken(res.data.data.accessToken);
       // console.log(res.data.data.process);
       setProcess(res.data.data.process);
       var array = res.data.data.process
@@ -180,6 +181,25 @@ const Index = () => {
                       <Badge status="info">{userAccessToken}</Badge>
                     </Stack.Item>
                   </Stack>
+                </Layout.Section>
+                <Layout.Section>
+                  <Heading element="h1">Implementation Steps :</Heading>
+                  <MediaCard
+                    title="Turn your side-project into a business"
+                    primaryAction={{
+                      content: "Learn more",
+                      onAction: () => {},
+                    }}
+                    description={`In this course, you’ll learn how the Kular family turned their mom’s recipe book into a global business.`}
+                    popoverActions={[
+                      { content: "Dismiss", onAction: () => {} },
+                    ]}
+                  >
+                    <VideoThumbnail
+                      videoLength={80}
+                      thumbnailUrl="https://youtu.be/9eZT2I_AOu4"
+                    />
+                  </MediaCard>
                 </Layout.Section>
               </>
             ) : null}
