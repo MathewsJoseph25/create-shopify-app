@@ -198,7 +198,7 @@ const Index = () => {
                   >
                     <VideoThumbnail
                       videoLength={80}
-                      thumbnailUrl="https://youtu.be/9eZT2I_AOu4"
+                      thumbnailUrl="https://www.youtube.com/watch?v=9eZT2I_AOu4&feature=youtu.be"
                     />
                   </MediaCard>
                 </Layout.Section>
