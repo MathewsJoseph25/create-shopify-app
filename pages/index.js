@@ -193,18 +193,6 @@ const Index = () => {
                     </Stack.Item>
                   </Stack>
                 </Layout.Section>
-                <Layout.Section>
-                  <Heading element="h1">Implementation Steps :</Heading>
-                  <iframe
-                    id="ytplayer"
-                    type="text/html"
-                    width="720"
-                    height="405"
-                    src="https://www.youtube.com/embed/9eZT2I_AOu4"
-                    frameborder="0"
-                    allowfullscreen
-                  />
-                </Layout.Section>
               </>
             ) : null}
             {product || image || orderRec || orderDel || orderRet ? (
@@ -294,6 +282,18 @@ const Index = () => {
                 </Layout.Section>
               </>
             ) : null}
+            <Layout.Section>
+              <Heading element="h1">Implementation Steps :</Heading>
+              <iframe
+                id="ytplayer"
+                type="text/html"
+                width="720"
+                height="405"
+                src="https://www.youtube.com/embed/9eZT2I_AOu4"
+                frameborder="0"
+                allowfullscreen
+              />
+            </Layout.Section>
           </Layout>
         </Card.Section>
       </Card>
