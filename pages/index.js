@@ -157,6 +157,7 @@ const Index = () => {
     }
   };
 
+  
   return (
     <Page>
       <Card>
@@ -287,8 +288,11 @@ const Index = () => {
               <iframe
                 id="ytplayer"
                 type="text/html"
-                width="720"
-                height="405"
+                width="100%"
+                height="100%"
+                top="0"
+                left="0"
+                border="0"
                 src="https://www.youtube.com/embed/9eZT2I_AOu4"
                 frameborder="0"
                 allowfullscreen
