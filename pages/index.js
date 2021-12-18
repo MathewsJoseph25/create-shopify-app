@@ -372,9 +372,14 @@ const Index = () => {
           <Layout.Section id="registration form" title="Registration Form">
             <Card.Section>
               <TextContainer>
-                <a>
+                <p>
                   This app requires additional setup and a TCP file compiled on
                   your Tally Serial Number, Please fill up the form Below.
+                </p>
+                <br />
+                <a>
+                  (a valid serial number starts with 7, is 9 digits long, & total
+                  of digits is 9 for example 700000002, 700000011 ... 799999992)
                 </a>
               </TextContainer>
               <Form
