@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Getting Started with Shopify App Development with JWT Authentication using NodeJs, React, Shopify Polaris and MongoDB",
   "main": "server/server.js",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server/server.js",
