@@ -29,7 +29,6 @@
     "nonce": "^1.0.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-player": "^2.9.0",
     "react-youtube": "^7.13.1"
   },
   "devDependencies": {
