@@ -63,7 +63,7 @@ server.use(function (req, res, next) {
     `frame-ancestors ${shopurl} https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com`
   );
   res.setHeader(
-    "Content-Security-Policy",
+    "Content-Security-Policy-Report-Only",
     `frame-ancestors ${shopurl} https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com`
   );
   res.setHeader("Access-Control-Allow-Origin", "https://www.youtube.com/*");
