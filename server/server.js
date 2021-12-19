@@ -63,8 +63,13 @@ server.use(function (req, res, next) {
     `frame-ancestors ${shopurl} https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com`
   );
   res.setHeader(
+<<<<<<< HEAD
     "Content-Security-Policy-Report-Only",
     `frame-ancestors ${shopurl} https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com`
+=======
+    "Content-Security-Policy",
+    "frame-ancestors https://cambridgetestshop.myshopify.com https://admin.shopify.com https://*.myshopify.com https://example.myshopify.com https://www.youtube.com"
+>>>>>>> parent of 897df7d (Update server.js)
   );
   res.setHeader("Access-Control-Allow-Origin", "https://www.youtube.com/*");
   next();
