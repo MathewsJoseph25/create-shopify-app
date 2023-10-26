@@ -1,0 +1,14 @@
+{
+  "name": "create-shopify-app",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "devDependencies": {
+    "bun-types": "latest",
+    "prettier": "^3.0.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

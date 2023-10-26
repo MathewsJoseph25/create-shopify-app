@@ -1,0 +1,59 @@
+version: '3.4'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx_reverse_proxy
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - admin
+      - api
+    networks:
+      main:
+        aliases:
+          - nginx
+  admin:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - BUILD_CONTEXT=apps/admin
+    env_file:
+      - .env
+    environment:
+      - PORT=3000
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/shopify-app
+    networks:
+      main:
+        aliases:
+          - admin
+
+  api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        - BUILD_CONTEXT=apps/api
+    env_file:
+      - .env
+    environment:
+      - PORT=8000
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/shopify-app
+    networks:
+      main:
+        aliases:
+          - api
+
+volumes:
+  node_modules:
+
+networks:
+  main:
