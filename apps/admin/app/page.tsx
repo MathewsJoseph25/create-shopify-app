@@ -1,11 +1,12 @@
 'use client'
 import { AppContext } from '@/contexts/appContext.context'
 import { useContext, useCallback } from 'react'
-import { Page, Layout, Text, Card } from '@shopify/polaris'
+import { Page, Layout, Text, Card, BlockStack, Button } from '@shopify/polaris'
 import { useShopifyGraphQl } from '@/hooks/useShopifyGraphQl.hook'
 import { useShopifyRestApi } from '@/hooks/useShopifyRestApi.hook'
 import { useAppBridge } from '@shopify/app-bridge-react'
 import { Redirect } from '@shopify/app-bridge/actions'
+import { useRouter } from 'next/navigation'
 
 const MOST_RECENTLY_CREATED_PRODUCTS_GRAPHQL = `
 query {
@@ -97,6 +98,7 @@ function ProductsCount() {
 
 export default function Home() {
   const appContext = useContext(AppContext)
+  const router = useRouter()
 
   return (
     <Page fullWidth>
@@ -139,18 +141,36 @@ export default function Home() {
         </Layout.Section>
         <Layout.Section>
           <Card>
-            <Text as="h2" variant="headingMd">
-              Total Products
-            </Text>
-            <Text as="p">
-              <ProductsCount />
-            </Text>
-            <br />
-            <Text as="h2" variant="headingMd">
-              Last 10 published products
-            </Text>
-            <br />
-            <LatestProducts />
+            {appContext.subscriptionData ? (
+              <>
+                <Text as="h2" variant="headingMd">
+                  Total Products
+                </Text>
+                <Text as="p">
+                  <ProductsCount />
+                </Text>
+                <br />
+                <Text as="h2" variant="headingMd">
+                  Last 10 published products
+                </Text>
+                <br />
+                <LatestProducts />
+              </>
+            ) : (
+              <>
+                <Text as="h2" variant="headingMd">
+                  To view product data, please upgrade to a paid plan
+                </Text>
+                <BlockStack inlineAlign="end">
+                  <Button
+                    variant="primary"
+                    onClick={() => router.push('/billing')}
+                  >
+                    Go to Billing page
+                  </Button>
+                </BlockStack>
+              </>
+            )}
           </Card>
         </Layout.Section>
       </Layout>

@@ -1,4 +1,5 @@
-import { ShopsModel } from '@/services/auth/models/shop.model'
+import { ShopsModel } from '@/services/auth/models/shops.model'
+import { trackException } from '@/utils/trackException.util'
 
 export const handleShopUpdateWebhook = async (payload: any, shop: string) => {
   try {
@@ -9,6 +10,6 @@ export const handleShopUpdateWebhook = async (payload: any, shop: string) => {
       { info: payload },
     )
   } catch (error) {
-    console.log('Error on Webhook - Shop Update: ', error, { shop })
+    trackException('Error on Webhook - Shop Update: ', error, { shop })
   }
 }

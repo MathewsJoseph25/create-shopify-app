@@ -64,7 +64,7 @@ export interface Shop {
   scopes: string
   nonce: string
   info: ShopInfo
-  billingPlan: ShopSubscriptionData | null
+  subscriptionData: ShopSubscriptionData | null
   isInstalled: boolean
   installedOn: Date | null
   uninstalledOn: Date | null

@@ -1,3 +1,4 @@
 export const DB_COLLECTIONS = {
-  SHOPS:'shops'
+  SHOPS: 'shops',
+  SHOP_SUBSCRIPTION_DATA: 'shop_subscription_datas',
 }

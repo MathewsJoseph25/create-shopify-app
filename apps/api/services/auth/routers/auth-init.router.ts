@@ -1,11 +1,12 @@
 import { RouteHandler } from '@/types'
 import { Request, Response } from 'express'
-import { ShopsModel } from '../models/shop.model'
+import { ShopsModel } from '../models/shops.model'
 import axios from 'axios'
 import { SHOPIFY_ACCESS_SCOPES, SHOPIFY_ADMIN_APP_URL } from '@/config'
 import { getShopInstallUrl } from '../helpers/getShopInstallUrl.helper'
 
 export const handler: RouteHandler = async (req: Request, res: Response) => {
+  const { redirectPath } = req.query
   const shop = (req.query.shop as string)
     ?.replace('https://', '')
     .replace('http://', '')
@@ -53,7 +54,9 @@ export const handler: RouteHandler = async (req: Request, res: Response) => {
         }
       }
 
-      let url = `${SHOPIFY_ADMIN_APP_URL}/?shop=${shop}.myshopify.com&host=${req.query.host}`
+      let url = `${SHOPIFY_ADMIN_APP_URL}${
+        redirectPath || ''
+      }?shop=${shop}.myshopify.com&host=${req.query.host}`
 
       if (isReAuthRequired) {
         let installUrl = await getShopInstallUrl(shop)

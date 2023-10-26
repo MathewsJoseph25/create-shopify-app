@@ -2,7 +2,7 @@ import { RouteHandler } from '@/types'
 import { Request, Response } from 'express'
 import { verifyUrlHMAC } from '../helpers/verifyShopifyUrlHmac.helper'
 import { ERROR_CODES } from '@/constants'
-import { ShopsModel } from '../models/shop.model'
+import { ShopsModel } from '../models/shops.model'
 import {
   SHOPIFY_ADMIN_APP_URL,
   SHOPIFY_API_KEY,

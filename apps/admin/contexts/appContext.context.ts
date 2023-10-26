@@ -1,9 +1,11 @@
 import { createContext } from 'react'
-import { BillingPlan, ShopInfo } from '@app/common'
+import { ShopInfo, ShopSubscriptionData } from '@app/common'
 
 export interface AppContextType {
   info: ShopInfo
-  billingPlan: BillingPlan | null
+  subscriptionData: ShopSubscriptionData | null
+  formatMoney: (money: string) => string
+  refetchShop: () => void
 }
 
 export const AppContext = createContext<AppContextType>({} as AppContextType)

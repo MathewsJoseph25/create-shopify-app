@@ -1,7 +1,7 @@
 import { SHOPIFY_API_VERSION } from '@/config'
 import axios from 'axios'
 import { trackException } from './trackException.util'
-import { ShopsModel } from '@/services/auth/models/shop.model'
+import { ShopsModel } from '@/services/auth/models/shops.model'
 
 export const fetchShopifyApi = async <T>(
   shop: string,

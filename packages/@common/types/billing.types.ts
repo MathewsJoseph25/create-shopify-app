@@ -1,21 +1,22 @@
-export interface BillingPlan{
+export interface BillingPlan {
   sku: string
   name: string
+  price: number
+  featureList: { label: string; value: string }[]
+}
+
+export enum SHOP_SUBSCRIPTION_STATUS {
+  ACTIVE = 'active',
+  CANCELLED = 'cancelled',
+}
+
+export interface ShopSubscriptionData {
+  shop: string
+  chargeId: number
   price: string
-  featureList: {label:string, value:string}[]
-}
-
-export enum ShopSubscriptionStatus{
-  ACTIVE='active',
-  PENDING='pending',
-}
-
-export interface ShopSubscriptionData{
-  id: number,
-  price: string,
   billingPlan: BillingPlan
   features: string[]
-  status: ShopSubscriptionStatus
+  status: SHOP_SUBSCRIPTION_STATUS
   createdAt: Date
   updatedAt: Date
 }

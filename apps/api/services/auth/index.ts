@@ -1,1 +1,1 @@
-import ('./models/shop.model')
+import('./models/shops.model')

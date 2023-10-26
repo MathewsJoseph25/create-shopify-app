@@ -5,7 +5,7 @@ import { Toast } from '@shopify/app-bridge/actions'
 import axios from 'axios'
 
 export const useAppApi = <T>(
-  req: { url: string; data?: any },
+  req?: { url: string; data?: any },
   dependencies?: any[],
 ) => {
   const appBridge = useAppBridge()
@@ -41,6 +41,11 @@ export const useAppApi = <T>(
             Authorization: token,
           },
         })
+
+        const msg = (fetch.data as any).msg
+        if (msg) {
+          showToast(msg)
+        }
 
         return fetch.data
       } catch (error: any) {
@@ -95,5 +100,6 @@ export const useAppApi = <T>(
     error,
     isError,
     isLoading,
+    refetch: fetchRequest,
   }
 }

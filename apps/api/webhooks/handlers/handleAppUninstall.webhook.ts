@@ -1,5 +1,5 @@
 import { SHOPIFY_API_VERSION } from '@/config'
-import { ShopsModel } from '@/services/auth/models/shop.model'
+import { ShopsModel } from '@/services/auth/models/shops.model'
 import { trackException } from '@/utils/trackException.util'
 import axios from 'axios'
 

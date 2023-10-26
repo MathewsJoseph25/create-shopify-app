@@ -10,3 +10,4 @@ else {
 
 //initialise services
 import('./services/auth')
+import('./services/billing')
