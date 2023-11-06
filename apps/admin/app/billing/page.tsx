@@ -6,11 +6,9 @@ import { useAppBridge } from '@shopify/app-bridge-react'
 import { BlockStack, Button, Card, Page, Text } from '@shopify/polaris'
 import { useContext, useState } from 'react'
 import { Redirect } from '@shopify/app-bridge/actions'
-import { useSearchParams } from 'next/navigation'
 
 export default function Billing() {
   const appContext = useContext(AppContext)
-  const searchParms = useSearchParams()
   const appBridge = useAppBridge()
   const { fetchAppApi } = useAppApi()
   const [billingUpgradeInProgress, setBillingUpgradeInProgress] =
