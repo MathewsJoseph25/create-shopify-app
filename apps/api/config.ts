@@ -4,8 +4,8 @@ dotenv.config()
 //setting timezone to UTC
 process.env.TZ = 'utc'
 
-export const SHOPIFY_API_KEY = process.env.NEXT_PUBLIC_SHOPIFY_API_KEY
-export const SHOPIFY_API_SECRET_KEY = process.env.SHOPIFY_API_SECRET_KEY
+const SHOPIFY_API_KEY = process.env.NEXT_PUBLIC_SHOPIFY_API_KEY
+const SHOPIFY_API_SECRET_KEY = process.env.SHOPIFY_API_SECRET_KEY
 export const SHOPIFY_ADMIN_APP_URL = process.env.SHOPIFY_ADMIN_APP_URL
 export const SHOPIFY_AUTH_REDIRECT_URL = process.env.SHOPIFY_AUTH_REDIRECT_URL
 export const SHOPIFY_SUBSCRIPTION_REDIRECT_URI =

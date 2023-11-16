@@ -3,14 +3,10 @@ import { Request, Response } from 'express'
 import { verifyUrlHMAC } from '../helpers/verifyShopifyUrlHmac.helper'
 import { ERROR_CODES } from '@/constants'
 import { ShopsModel } from '../models/shops.model'
-import {
-  SHOPIFY_ADMIN_APP_URL,
-  SHOPIFY_API_KEY,
-  SHOPIFY_API_SECRET_KEY,
-  SHOPIFY_API_VERSION,
-} from '@/config'
+import { SHOPIFY_ADMIN_APP_URL, SHOPIFY_API_VERSION } from '@/config'
 import axios from 'axios'
 import { addShopifyWebhooks } from '../helpers/addShopifyWebhooks.helper'
+import { getShopifyAuthKeys } from '../helpers/getShopifyAuthKeys.helper'
 
 export const handler: RouteHandler = async (req: Request, res: Response) => {
   //verify the request
@@ -25,6 +21,7 @@ export const handler: RouteHandler = async (req: Request, res: Response) => {
     .replace('http://', '')
     .split('.')[0]
   const { state, code, host } = req.query
+  const { SHOPIFY_API_KEY, SHOPIFY_API_SECRET_KEY } = getShopifyAuthKeys(shop)
 
   //check nonce value
   const shopData = await ShopsModel.findOne({ shop })

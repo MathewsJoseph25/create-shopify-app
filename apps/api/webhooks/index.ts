@@ -13,7 +13,7 @@ export const ShopifyWebhooksHandler = (req: Request, res: Response) => {
     .replace('http://', '')
     .split('.')[0]
 
-  const verified = verifyWebhook(req.body, hmac)
+  const verified = verifyWebhook(shop, req.body, hmac)
 
   if (!verified) {
     res

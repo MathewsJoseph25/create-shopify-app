@@ -6,6 +6,20 @@ import translations from '@shopify/polaris/locales/en.json'
 import { useCallback, useMemo } from 'react'
 import { AppContextWrapper } from './AppContextWrapper.component'
 import { CheckRedirect } from './CheckRedirect.component'
+import { CUSTOM_APP_CREDENTIALS } from '@app/common'
+
+const getShopifyAuthKeys = (shop: string) => {
+  if (CUSTOM_APP_CREDENTIALS[shop]) {
+    return CUSTOM_APP_CREDENTIALS[shop]
+  }
+  return {
+    SHOPIFY_API_KEY: process.env.NEXT_PUBLIC_SHOPIFY_API_KEY,
+    SHOPIFY_API_SECRET_KEY: process.env.SHOPIFY_API_SECRET_KEY,
+  } as {
+    SHOPIFY_API_KEY: string
+    SHOPIFY_API_SECRET_KEY: string
+  }
+}
 
 export function AppWrapper({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams()
@@ -13,7 +27,9 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
   const router = useRouter()
 
   const appBridgeConfig = {
-    apiKey: process.env.NEXT_PUBLIC_SHOPIFY_API_KEY!,
+    apiKey: getShopifyAuthKeys(
+      (searchParams.get('shop') as string)?.split('.')[0] || '',
+    ).SHOPIFY_API_KEY,
     host: searchParams.get('host')!,
     forceRedirect: true,
   }

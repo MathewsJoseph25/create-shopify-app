@@ -3,7 +3,7 @@ import { RouteHandler } from './types'
 import { ERROR_CODES } from './constants'
 import { trackException } from './utils/trackException.util'
 import crypto from 'crypto'
-import { SHOPIFY_API_KEY, SHOPIFY_API_SECRET_KEY } from './config'
+import { getShopifyAuthKeys } from './services/auth/helpers/getShopifyAuthKeys.helper'
 
 declare global {
   namespace Express {
@@ -29,6 +29,11 @@ export const urlRouter = async (req: Request, res: Response) => {
       //Extracting the data
       let [header, payload, signature] = authHeader.split('.')
 
+      const payloadData = JSON.parse(Buffer.from(payload, 'base64').toString())
+      const shop = payloadData.dest.replace('https://', '').split('.')[0]
+
+      const { SHOPIFY_API_KEY, SHOPIFY_API_SECRET_KEY } =
+        getShopifyAuthKeys(shop)
       //Verifying the auth
       const checkhmac = decodeURI(header + '.' + payload)
       const genHash = crypto
@@ -40,10 +45,6 @@ export const urlRouter = async (req: Request, res: Response) => {
         .replace(/=+$/g, '')
 
       if (genHash === signature) {
-        const payloadData = JSON.parse(
-          Buffer.from(payload, 'base64').toString(),
-        )
-
         //Getting current time to verfity the auth timestamp limits
         const cTime = Date.now() / 1000
 
@@ -56,9 +57,7 @@ export const urlRouter = async (req: Request, res: Response) => {
           payloadData.aud == SHOPIFY_API_KEY
         ) {
           //token verified
-          res.locals.shop = payloadData.dest
-            .replace('https://', '')
-            .split('.')[0]
+          res.locals.shop = shop
         }
       }
     }

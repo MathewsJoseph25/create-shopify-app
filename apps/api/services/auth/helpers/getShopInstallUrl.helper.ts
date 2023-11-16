@@ -1,14 +1,12 @@
-import {
-  SHOPIFY_ACCESS_SCOPES,
-  SHOPIFY_API_KEY,
-  SHOPIFY_AUTH_REDIRECT_URL,
-} from '@/config'
+import { SHOPIFY_ACCESS_SCOPES, SHOPIFY_AUTH_REDIRECT_URL } from '@/config'
 import { ShopsModel } from '../models/shops.model'
+import { getShopifyAuthKeys } from './getShopifyAuthKeys.helper'
 
 export const getShopInstallUrl = async (
   shop: string,
   pageToRedirect = null,
 ) => {
+  const { SHOPIFY_API_KEY } = getShopifyAuthKeys(shop)
   let nonce = Date.now()
   try {
     await ShopsModel.findOneAndUpdate(
