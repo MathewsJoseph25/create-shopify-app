@@ -1,8 +1,10 @@
+'use client'
 import { useAppApi } from '@/hooks/useAppApi.hook'
 import { PageLoadingState } from './PageLoadingState.component'
 import { AppContext, AppContextType } from '@/contexts/appContext.context'
 import { ShopInfo, ShopSubscriptionData } from '@app/common'
 import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 
 declare global {
   interface Window {
@@ -12,7 +14,9 @@ declare global {
 
 export function AppContextWrapper({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams()
-  window.host = window.host || searchParams.get('host')!
+  useEffect(() => {
+    window.host = window.host || searchParams.get('host')!
+  }, [])
 
   const { data, isLoading, isError, refetch } = useAppApi<{
     info: ShopInfo

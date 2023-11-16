@@ -49,6 +49,7 @@ export const useAppApi = <T>(
 
         return fetch.data
       } catch (error: any) {
+        console.error(error)
         if (error?.response?.data?.error) {
           showToast(error.response.data.error, true)
         }
