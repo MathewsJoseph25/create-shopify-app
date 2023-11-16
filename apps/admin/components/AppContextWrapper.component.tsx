@@ -1,7 +1,7 @@
 'use client'
 import { useAppApi } from '@/hooks/useAppApi.hook'
 import { PageLoadingState } from './PageLoadingState.component'
-import { AppContext, AppContextType } from '@/contexts/appContext.context'
+import { AppContext } from '@/contexts/appContext.context'
 import { ShopInfo, ShopSubscriptionData } from '@app/common'
 import { useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
